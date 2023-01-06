@@ -151,6 +151,9 @@ Q&A;
 ## Milestone/implementation plan
 
 1. Parse command line : DONE (1/5/2023)
+    user input goes through readline to be parsed and categorized by getopt. 
+    -c args are separated from command such ad "add", "rm",...
 2. Node/block related function
+    
 3. Write backup
 4. Read backup

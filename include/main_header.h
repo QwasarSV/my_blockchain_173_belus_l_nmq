@@ -129,6 +129,7 @@ node_t* create_new_node(int value, node_t *head);
 node_t* insert_at_head(node_t** head, node_t* node_to_insert);
 void test_print_list(node_t *head);
 node_t* swap(node_t* head, int node_index1, int node_index2);
+void print_llist_n_n1(node_t* n_head, bool state);
 void print_and_free_llist(node_t* n_head);
 void free_node(node_t* head);
 

@@ -59,7 +59,8 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
     if (my_strcmp(getopt_ptr->path_arr[0], LS) == 0)
     {
         printf("%s\n",getopt_ptr->path_arr[0]);
-        test_print_list(head);
+        print_llist_n_n1(head, getopt_ptr->bool_arr[0]);
+        // test_print_list(head);
         // run LS and end function
     }
     else
