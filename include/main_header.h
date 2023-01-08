@@ -34,7 +34,9 @@ struct node
     //hierarchy: n+1
     int index;
     struct node* head;
-
+    int bid;
+    int prev_bid;
+    int nid;
     //hierarchy: n
     //int timestamp;
     //transac_t transaction;
@@ -132,7 +134,7 @@ node_t* swap(node_t* head, int node_index1, int node_index2);
 void print_llist_n_n1(node_t* n_head, bool state);
 void print_and_free_llist(node_t* n_head);
 void free_node(node_t* head);
-
+int node_count(node_t *head);
 
 //stdlib.h
 int my_ctoi(char *string, size_t n);

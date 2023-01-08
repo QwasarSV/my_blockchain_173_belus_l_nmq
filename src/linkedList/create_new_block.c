@@ -4,6 +4,7 @@ node_t* create_new_block(int value)
 {
     node_t* result = malloc(sizeof(node_t));
     result->index = value;
+    result->bid = value;
     result->next = NULL;
     result->head = NULL;
     return result;

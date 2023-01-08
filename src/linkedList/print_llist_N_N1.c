@@ -7,7 +7,7 @@ void print_llist_n_n1(node_t* n_head, bool state) //, my_getopt_t *getopt_ptr
     node_t *tmp = n_head; 
     while (tmp != NULL)
     {
-         printf("node %i:\n",tmp->index);
+         printf("node %i ; last BID:%i\n",tmp->nid, tmp->prev_bid);
         if (tmp->head != NULL && state == true)
         {
             test_print_list(tmp->head);
