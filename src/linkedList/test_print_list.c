@@ -6,6 +6,7 @@ void test_print_list(node_t *head)
     while (tmp != NULL)
     {
         printf("%d-", tmp->bid);
+        printf("p%d-", tmp->prev_bid);
         tmp = tmp->next;
     }
     if (tmp == NULL)
