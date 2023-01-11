@@ -7,12 +7,15 @@ void print_llist_n_n1(node_t* n_head, bool state) //, my_getopt_t *getopt_ptr
     node_t *tmp = n_head; 
     while (tmp != NULL)
     {
-         printf("node %i ; last BID:%i\n",tmp->nid, tmp->prev_bid);
+        printf("%i:",tmp->nid);
         if (tmp->head != NULL && state == true)
         {
             test_print_list(tmp->head);
+            
         }
+        printf("\n");
         tmp = tmp->next;
-            printf("\n");
     }
 }
+
+        //  printf("node %i ; last BID:%i\n",tmp->nid, tmp->prev_bid);

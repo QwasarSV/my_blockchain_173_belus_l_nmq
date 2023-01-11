@@ -13,7 +13,7 @@ void sort_bid(node_t* node)
             {
                 if (tmp->bid == next->prev_bid)
                 {
-                    printf("swapping block %i with block %i \n", tmp->bid, next->bid);
+                    //printf("swapping block %i with block %i \n", tmp->bid, next->bid);
                     node->head = swap(node->head, tmp->bid, next->bid);
                     tmp = next;
                 }

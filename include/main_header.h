@@ -149,6 +149,8 @@ void set_last_bid(node_t* head, int bid);
 
 //stdlib.h
 int my_ctoi(char *string, size_t n);
+char* their_itoa(int value, char* result, int base);
+void my_revswap(char *ptr, char*ptr1, char tmp_char);
 
 //my_blockchain
 
