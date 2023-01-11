@@ -61,6 +61,10 @@ void invite_prmt(int val, int type) // test function to recode
 
 void new_cmd(node_t* head) // test function to recode
 {
+    if (head == NULL)
+    {
+        return;
+    }
     int diff = diff_block(head);
     int count = node_count(head->head);
     if (count >= 0 && diff == 0)

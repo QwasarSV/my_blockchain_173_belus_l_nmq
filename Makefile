@@ -4,12 +4,12 @@ cc := GCC
 BUILD_DIR := ./build
 SRC_DIRS := ./src
 CFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
-LDFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
+LDFLAGS = $(CFLAGS)
 
 # Find all the C and C++ files we want to compile
 # Note the single quotes around the * expressions. Make will incorrectly expand these otherwise.
-SRCS := $(shell find $(SRC_DIRS) -name '*.cpp' -or -name '*.c' -or -name '*.s')
-
+SRCS := $(shell find $(SRC_DIRS) -name '*.c')
+BUIS := $(shell find $(BUILD_DIR) -name '*.o')
 # String substitution for every C/C++ file.
 # As an example, hello.cpp turns into ./build/hello.cpp.o
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
@@ -36,10 +36,11 @@ $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-.PHONY: clean
+.PHONY: clean fclean
 clean:
 	rm -r $(BUILD_DIR)
 fclean:
+	rm $(BUIS)
 	rm $(TARGET_EXEC)
 	rm $(BUILD_DIR)/$(TARGET_EXEC)
 
