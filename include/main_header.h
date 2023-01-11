@@ -126,6 +126,7 @@ char** dirty_split(char* str, int start_pos);
 
 //node/block
 
+node_t* create_block(node_t* head, int nid, int bid);
 node_t* create_new_block(int value, int prev_bid);
 node_t* create_new_node(int value, node_t *head);
 node_t* insert_at_head(node_t** head, node_t* node_to_insert);
@@ -138,11 +139,19 @@ int node_count(node_t *head);
 node_t* create_cpy_block(node_t* block);
 void sort_bid(node_t* node);
 node_t* swap(node_t* head, int node_index1, int node_index2);
-void reverse_node_order(node_t** head);
-
+//void reverse_node_order(node_t** head);
+node_t* sync_nodes(node_t* head);
+bool is_block_on_chain(node_t* block_head, node_t* block);
+void delete_node_on_nid(node_t **head, int nid);
+void delete_block_on_bid(node_t **head, int nid);
+int consensus_check(node_t* head);
+void set_last_bid(node_t* head, int bid);
 
 //stdlib.h
 int my_ctoi(char *string, size_t n);
 
+//my_blockchain
 
+int count_cmd(char*str);
+int quit_cmd(char* cmd, node_t* head);
 #endif
