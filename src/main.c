@@ -62,7 +62,6 @@ void invite_prmt(int val, int type) // test function to recode
 void new_cmd(node_t* head) // test function to recode
 {
     int diff = diff_block(head);
-    printf("diff is %i\n", diff);
     int count = node_count(head->head);
     if (count >= 0 && diff == 0)
     {
@@ -85,10 +84,11 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
     if (my_strcmp(getopt_ptr->path_arr[0], ADD) == 0)
     {   
         printf("OK\n");
-        nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
+        
         // printf("%s\n",getopt_ptr->path_arr[0]);
         if (my_strcmp(getopt_ptr->path_arr[1], NODE) == 0)
         {
+            nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
             tmp = create_new_node(nid, NULL);
             head = insert_at_head(&head, tmp);
             head->prev_bid = consensus_check(head);
@@ -96,7 +96,8 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
         else
         if (my_strcmp(getopt_ptr->path_arr[1], BLOCK) == 0)
         {
-            bid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
+            nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
+            bid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
             head = create_block(head, nid, bid);
             set_last_bid(head, bid);
         }

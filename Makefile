@@ -1,6 +1,6 @@
 # Thanks to Job Vranish (https://spin.atomicobject.com/2016/08/26/makefile-c-projects/)
 TARGET_EXEC := my_blockchain
-
+cc := GCC
 BUILD_DIR := ./build
 SRC_DIRS := ./src
 CFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
@@ -29,22 +29,19 @@ CPPFLAGS := $(INC_FLAGS) -MMD -MP
 
 # The final build step.
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
-	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
-
+	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+	cp $(BUILD_DIR)/$(TARGET_EXEC) ./
 # Build step for C source
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-# Build step for C++ source
-$(BUILD_DIR)/%.cpp.o: %.cpp
-	mkdir -p $(dir $@)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
-
-
 .PHONY: clean
 clean:
 	rm -r $(BUILD_DIR)
+fclean:
+	rm $(TARGET_EXEC)
+	rm $(BUILD_DIR)/$(TARGET_EXEC)
 
 # Include the .d makefiles. The - at the front suppresses the errors of missing
 # Makefiles. Initially, all the .d files will be missing, and we don't want those
