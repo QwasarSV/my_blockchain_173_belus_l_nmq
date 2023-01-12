@@ -96,7 +96,6 @@ char* my_strchr(char* str, char ch);            // getopt,
 
 extern int READLINE_READ_SIZE;
 extern char* rl_buff;
-
 char* my_readline(int fd);                      // main,
 char* init_my_readline();                       // main,
 int my_realloc_rl(int size);                    // readline,
@@ -146,7 +145,8 @@ void delete_node_on_nid(node_t **head, int nid);
 void delete_block_on_bid(node_t **head, int nid);
 int consensus_check(node_t* head);
 void set_last_bid(node_t* head, int bid);
-
+bool is_node_on_network(node_t* node_head, int nid);
+bool check_bid(node_t* block_head, int bid);
 //stdlib.h
 int my_ctoi(char *string, size_t n);
 char* their_itoa(int value, char* result, int base);

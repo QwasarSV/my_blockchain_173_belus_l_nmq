@@ -66,7 +66,7 @@ void new_cmd(node_t* head) // test function to recode
         return;
     }
     int diff = diff_block(head);
-    int count = node_count(head->head);
+    int count = node_count(head);
     if (count >= 0 && diff == 0)
     {
         invite_prmt(count, 0);
@@ -85,25 +85,48 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
     node_t* tmp_block= NULL;
     int nid = 0;
     int bid = 0;
+    int state = 0;
     if (my_strcmp(getopt_ptr->path_arr[0], ADD) == 0)
     {   
         printf("OK\n");
-        
         // printf("%s\n",getopt_ptr->path_arr[0]);
         if (my_strcmp(getopt_ptr->path_arr[1], NODE) == 0)
         {
+            state = 1;
             nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-            tmp = create_new_node(nid, NULL);
-            head = insert_at_head(&head, tmp);
-            head->prev_bid = consensus_check(head);
+            if (is_node_on_chain(head, nid))
+            {
+                printf("2: this node already exists\n");
+            }
+            else
+            {
+                tmp = create_new_node(nid, NULL);
+                head = insert_at_head(&head, tmp);
+                head->prev_bid = consensus_check(head);
+            }
         }
         else
         if (my_strcmp(getopt_ptr->path_arr[1], BLOCK) == 0)
         {
+            state = 1;
             nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
             bid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-            head = create_block(head, nid, bid);
-            set_last_bid(head, bid);
+
+            if (is_node_on_network(head, nid))
+            {
+                printf("4: node doesn't exists\n");
+            }
+            else
+            if (is_block_on_node(head, nid, bid))
+            {
+               printf("3: this block already exists\n"); 
+            }
+            else
+            {
+                head = create_block(head, nid, bid);
+                set_last_bid(head, bid);
+            }
+            
         }
     }
     else
@@ -112,29 +135,51 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
         // printf("%s\n",getopt_ptr->path_arr[0]);
         if (my_strcmp(getopt_ptr->path_arr[1], NODE) == 0)
         {
+            state = 1;
             nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-            delete_node_on_nid(&head, nid);
+            if (is_node_on_network(head, nid))
+            {
+                printf("4: node doesn't exists\n");
+            }
+            else
+            {
+                delete_node_on_nid(&head, nid);
+            }
         }
         else
         if (my_strcmp(getopt_ptr->path_arr[1], BLOCK) == 0)
         {
+            state = 1;
             bid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
-            delete_block_on_bid(&head, bid);
+            if (is_block_on_network(head, bid))
+            {
+                printf("5: block doesn't exists\n");
+            }
+            
+                delete_block_on_bid(&head, bid);
         }
     }
     else
     if (my_strcmp(getopt_ptr->path_arr[0], LS) == 0)
     {
+        state = 1;
         // printf("%s\n",getopt_ptr->path_arr[0]);
         print_llist_n_n1(head, getopt_ptr->bool_arr[0]);
     }
     else
     if (my_strcmp(getopt_ptr->path_arr[0], SYNC) == 0)
     {
+        state = 1;
         printf("OK\n");
         head = sync_nodes(head);
         // printf("%s\n",getopt_ptr->path_arr[0]);
     }
+
+    if(state == 0)
+    {
+        printf("6: command not found\n");
+    }
+
     return head;
 }
 
