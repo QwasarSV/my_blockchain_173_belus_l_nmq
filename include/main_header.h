@@ -147,6 +147,8 @@ int consensus_check(node_t* head);
 void set_last_bid(node_t* head, int bid);
 bool is_node_on_network(node_t* node_head, int nid);
 bool check_bid(node_t* block_head, int bid);
+bool is_block_on_network(node_t* node_head, int nid, int bid);
+bool is_block_on_node(node_t* node_head, int nid, int bid);
 //stdlib.h
 int my_ctoi(char *string, size_t n);
 char* their_itoa(int value, char* result, int base);

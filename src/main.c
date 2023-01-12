@@ -94,7 +94,7 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
         {
             state = 1;
             nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-            if (is_node_on_chain(head, nid))
+            if (is_node_on_network(head, nid))
             {
                 printf("2: this node already exists\n");
             }
@@ -112,7 +112,7 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
             nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
             bid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
 
-            if (is_node_on_network(head, nid))
+            if (is_node_on_network(head, nid) == false)
             {
                 printf("4: node doesn't exists\n");
             }
@@ -137,7 +137,7 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
         {
             state = 1;
             nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-            if (is_node_on_network(head, nid))
+            if (is_node_on_network(head, nid) == false)
             {
                 printf("4: node doesn't exists\n");
             }
@@ -151,7 +151,7 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
         {
             state = 1;
             bid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
-            if (is_block_on_network(head, bid))
+            if (is_block_on_network(head, nid, bid) == false)
             {
                 printf("5: block doesn't exists\n");
             }

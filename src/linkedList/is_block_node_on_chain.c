@@ -52,7 +52,7 @@ bool is_block_on_network(node_t* node_head, int nid, int bid)
 
     while (tmp != NULL)
     {
-        is_block_on_chain(tmp->head, bid);
+        check_bid(tmp->head, bid);
         tmp = tmp->next;
     }
     return false;
@@ -66,7 +66,7 @@ bool is_block_on_node(node_t* node_head, int nid, int bid)
     {
         if (nid == tmp->nid)
         {
-            return is_block_on_chain(tmp->head, bid);
+            return check_bid(tmp->head, bid);
         }
         tmp = tmp->next;
     }
