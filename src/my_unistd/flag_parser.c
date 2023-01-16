@@ -23,5 +23,6 @@ int flag_parser(int argc, char** argv, char* valid_args, my_getopt_t* getopt_ptr
         }
         opt = 0;
     }
+    getopt_ptr->hash = hash_string(getopt_ptr->path_arr, getopt_ptr->path_pos, 2);
     return 0;
 }

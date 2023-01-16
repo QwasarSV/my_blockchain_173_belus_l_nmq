@@ -7,7 +7,6 @@
     if not then copy it
     and then sort by bid
 */
-
     // printf("get_last_bid.c - prevbid : %i\n",tmp_bid);
     // printf("get_last_bid.c - currbid : %i\n",tmp->prev_bid);
     // printf("get_last_bid.c - counter_node : %i\n",counter_node);
@@ -35,29 +34,43 @@ int diff_block(node_t* head) // test function to recode
     return max_count - min_count;
 }
 
-#define INVITE_01 "["
-#define INVITE_DIFF "-"
-#define INVITE_SYNC "s"
-#define INVITE_OUT "]>"
-
-void invite_prmt(int val, int type) // test function to recode
+char* invite_prmt(int val, int type) // test function to recode
 {
-    char str[35] = {'\0'};
-    strcat(str, INVITE_01);
+    char buff[12] = {'\0'};
+    itoa(val, buff, 10);
+    int len = 4;
+    len += my_strlen(buff) + 1;
+    char str[len];
+    my_memset(str,'\0', len);
+    str[0] = INVITE_OBRACKET;
     if (type == 1)
     {
-        strcat(str, INVITE_DIFF);
+        str[1] = INVITE_DIFF;
     }
     else
     {
-        strcat(str, INVITE_SYNC);
+        str[1] = INVITE_SYNC;
     }
-    char buff[12];
-    their_itoa(val, buff, 10);
-    strcat(str, buff);
-    strcat(str, INVITE_OUT);
-    write(STDIN_FILENO, str, 5);
+    my_strcat(str, buff);
+    my_strcat(str, INVITE_CLOSE);
+    write(STDIN_FILENO, str, len);
+    catch_log(str);
 }
+    // char str[35] = {'\0'};
+    // strcat(str, INVITE_01);
+    // if (type == 1)
+    // {
+    //     strcat(str, INVITE_DIFF);
+    // }
+    // else
+    // {
+    //     strcat(str, INVITE_SYNC);
+    // }
+    // char buff[12];
+    // their_itoa(val, buff, 10);
+    // strcat(str, buff);
+    // strcat(str, INVITE_OUT);
+    // write(STDIN_FILENO, str, 5);
 
 void new_cmd(node_t* head) // test function to recode
 {
@@ -70,130 +83,11 @@ void new_cmd(node_t* head) // test function to recode
     if (count >= 0 && diff == 0)
     {
         invite_prmt(count, 0);
-        //printf("[s%i]>", node_count(head->head));
     }
     else
     {
         invite_prmt(diff, 1);
-        // printf("[-%i]>", diff);
     }
-}
-
-node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
-{
-    node_t* tmp = NULL;
-    node_t* tmp_block= NULL;
-    int nid = 0;
-    int bid = 0;
-    int state = 0;
-    if (my_strcmp(getopt_ptr->path_arr[0], ADD) == 0)
-    {   
-        
-        // printf("%s\n",getopt_ptr->path_arr[0]);
-        if (my_strcmp(getopt_ptr->path_arr[1], NODE) == 0)
-        {
-            
-            state = 1;
-            nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-            if (is_node_on_network(head, nid))
-            {
-                printf("nok\n");
-                printf("2: this node already exists\n");
-            }
-            else
-            {
-                printf("ok\n");
-                tmp = create_new_node(nid, NULL);
-                head = insert_at_head(&head, tmp);
-                head->prev_bid = consensus_check(head);
-            }
-        }
-        else
-        if (my_strcmp(getopt_ptr->path_arr[1], BLOCK) == 0)
-        {
-            
-            state = 1;
-            nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
-            bid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-
-            if (is_node_on_network(head, nid) == false)
-            {
-                printf("nok\n");
-                printf("4: node doesn't exists\n");
-            }
-            else
-            if (is_block_on_node(head, nid, bid))
-            {
-                printf("nok\n");
-                printf("3: this block already exists\n"); 
-            }
-            else
-            {
-                printf("ok\n");
-                head = create_block(head, nid, bid);
-                set_last_bid(head, bid);
-            }
-            
-        }
-    }
-    else
-    if (my_strcmp(getopt_ptr->path_arr[0], REMOVE) == 0)
-    {
-        // printf("%s\n",getopt_ptr->path_arr[0]);
-        if (my_strcmp(getopt_ptr->path_arr[1], NODE) == 0)
-        {
-            
-            state = 1;
-            nid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
-            if (is_node_on_network(head, nid) == false)
-            {
-                printf("nok\n");
-                printf("4: node doesn't exists\n");
-            }
-            else
-            {
-                printf("ok\n");
-                delete_node_on_nid(&head, nid);
-            }
-        }
-        else
-        if (my_strcmp(getopt_ptr->path_arr[1], BLOCK) == 0)
-        {
-            state = 1;
-            bid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
-            if (is_block_on_network(head, nid, bid) == false)
-            {
-                printf("5: block doesn't exists\n");
-            }
-            else
-            {
-                delete_block_on_bid(&head, bid);
-            }
-        }
-    }
-    else
-    if (my_strcmp(getopt_ptr->path_arr[0], LS) == 0)
-    {
-        state = 1;
-        // printf("%s\n",getopt_ptr->path_arr[0]);
-        print_llist_n_n1(head, getopt_ptr->bool_arr[0]);
-    }
-    else
-    if (my_strcmp(getopt_ptr->path_arr[0], SYNC) == 0)
-    {
-        state = 1;
-        printf("ok\n");
-        head = sync_nodes(head);
-        // printf("%s\n",getopt_ptr->path_arr[0]);
-    }
-
-    if(state == 0 && my_strcmp(getopt_ptr->path_arr[0], QUIT) != 0)
-    {
-        printf("nok\n");
-        printf("6: command not found\n");
-    }
-
-    return head;
 }
 
 int main(void) 
@@ -201,24 +95,30 @@ int main(void)
     int cmd_count = 0;
     int fd = STDIN_FILENO;
     node_t* node;
+    my_getopt_t* getopt_ptr = NULL;
     //open("backup.txt", O_CREAT || O_APPEND, 0644);
     // while ((initiale_size = read(fd, &node, READLINE_READ_SIZE)))
     // {
     // }
     char* str = NULL;
     char** tokens = NULL;
-    write(fd, "[s0]>", 6);
+    write(fd, "[s0]>ok\n", 9); // TO IMPLEMENT WITH BACKUP RECOVERY/ CREATION
+    catch_log("[s0]>ok\n");
     init_my_readline();
     while ((str = my_readline(fd)) != NULL)
     {
-        my_getopt_t* getopt_ptr = malloc(sizeof(my_getopt_t));
+        getopt_ptr = malloc(sizeof(my_getopt_t));
         init_getopt(getopt_ptr, VALID_ARG);
         cmd_count = count_cmd(str) + 2;
         tokens = dirty_split(str , 1); //draw me like one of your argv!
         flag_parser(cmd_count, tokens, VALID_ARG, getopt_ptr);
         node = execute_cmd(getopt_ptr, node);
-        fd = quit_cmd(getopt_ptr->path_arr[0], node);
-        if (fd != -1)
+        // fd = quit_cmd(getopt_ptr->path_arr[0], node);
+        if (getopt_ptr->state == false)
+        {
+            fd = -1;
+        }
+        else
         {
             new_cmd(node);
         }
@@ -226,6 +126,7 @@ int main(void)
         free(tokens);
         free(str);
     }
+    print_log();
     //free_readline();
     return 0;
 }

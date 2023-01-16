@@ -3,7 +3,7 @@
 	//!= ctoi take a value and return a buffer. 
 
     // ref ITOA : https://www.strudel.org.uk/itoa/
-	char* their_itoa(int value, char* result, int base)
+	char* itoa(int value, char* result, int base)
     {
 		// check that the base if valid
 		if (base < 2 || base > 36) { *result = '\0'; return result; }

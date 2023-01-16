@@ -45,17 +45,21 @@ bool is_node_on_network(node_t* node_head, int nid)
     return false;
 }
 
-bool is_block_on_network(node_t* node_head, int nid, int bid)
+bool is_block_on_network(node_t* node_head, int bid)
 {
     node_t* tmp = node_head;
     bool result = false;
 
     while (tmp != NULL)
     {
-        check_bid(tmp->head, bid);
+        result = check_bid(tmp->head, bid);
+        if (result == true)
+        {
+            return result;
+        }
         tmp = tmp->next;
     }
-    return false;
+    return result;
 }
 
 bool is_block_on_node(node_t* node_head, int nid, int bid)

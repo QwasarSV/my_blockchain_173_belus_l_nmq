@@ -1,0 +1,28 @@
+#include "../../include/main_header.h"
+
+
+node_t* add_block(node_t* head, my_getopt_t* getopt_ptr)
+{
+    int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
+    int bid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
+    if (is_node_on_network(head, nid) == false)
+    {
+        write(STDIN_FILENO, NOK, my_strlen(NOK));
+        write(STDIN_FILENO, NODE_DNT_EXIST, my_strlen(NODE_DNT_EXIST));
+    }
+    else
+    if (is_block_on_network(head, bid))
+    {
+        write(STDIN_FILENO, NOK, my_strlen(NOK));
+        write(STDIN_FILENO, BLOCK_EXIST_ERROR, my_strlen(BLOCK_EXIST_ERROR));
+    }
+    else
+    {
+        char str[4] = OK;
+        catch_log(str);
+        write(STDIN_FILENO, str, my_strlen(str) + 1);
+        head = create_block(head, nid, bid);
+        set_last_bid(head, bid);
+    }
+    return head;
+}
