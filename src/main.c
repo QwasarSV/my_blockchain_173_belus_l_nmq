@@ -116,7 +116,7 @@ int main(void)
         // fd = quit_cmd(getopt_ptr->path_arr[0], node);
         if (getopt_ptr->state == false)
         {
-            fd = -1;
+           fd = -1;
         }
         else
         {

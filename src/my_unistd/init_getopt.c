@@ -2,6 +2,7 @@
 
 void init_getopt(my_getopt_t* getopt_ptr, char* valid_args)
 {
+    getopt_ptr->state = true;
     getopt_ptr->bool_arr = malloc(sizeof(bool) * my_strlen(valid_args));
     fill_bool_array(getopt_ptr->bool_arr, my_strlen(valid_args));
     // getopt_ptr->file_size = malloc(sizeof(int)*100); // dummy
