@@ -89,6 +89,7 @@ typedef struct s_my_getopt
     char** path_arr;
     int* file_size; //dummy
     bool* state;
+    bool exit_status;
     long long hash;
 } my_getopt_t;
 #endif

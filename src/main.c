@@ -114,7 +114,7 @@ int main(void)
         flag_parser(cmd_count, tokens, VALID_ARG, getopt_ptr);
         node = execute_cmd(getopt_ptr, node);
         // fd = quit_cmd(getopt_ptr->path_arr[0], node);
-        if (getopt_ptr->state == false)
+        if (getopt_ptr->exit_status == true)
         {
            fd = -1;
         }
