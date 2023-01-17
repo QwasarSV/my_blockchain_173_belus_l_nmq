@@ -31,5 +31,5 @@ void catch_log(char* str)
 
 void print_log()
 {
-    printf("%s\n",log_buff);
+    printf("%s",log_buff);
 }
