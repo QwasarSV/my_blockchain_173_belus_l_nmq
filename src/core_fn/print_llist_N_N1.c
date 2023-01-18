@@ -12,10 +12,10 @@ void print_llist_n_n1(node_t* n_head, bool state)
     {
         itoa(tmp->nid, buff, 10);
         strcat(str, buff);
-        size = my_strlen(str);
-        str[size] = ':';
         if (tmp->head != NULL && state == true)
         {
+            size = my_strlen(str);
+            str[size] = ':';
             test_print_list(tmp->head, str);
         }
         size = my_strlen(str);

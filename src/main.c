@@ -1,5 +1,6 @@
 #include "../include/main_header.h"
 #include <string.h>
+#include <unistd.h>
 // sync four part function
 /*
     send block to all nodes
@@ -36,7 +37,7 @@ int diff_block(node_t* head) // test function to recode
 
 void invite_prmt(int val, int type) // test function to recode
 {
-    char buff[12] = {'\0'};
+    char buff[32] = {'\0'};
     itoa(val, buff, 10);
     int len = 4;
     len += my_strlen(buff) + 1;
@@ -53,8 +54,8 @@ void invite_prmt(int val, int type) // test function to recode
     }
     my_strcat(str, buff);
     my_strcat(str, INVITE_CLOSE);
-    write(STDIN_FILENO, str, len);
-    catch_log(str);
+    write(STDOUT_FILENO, str, my_strlen(str));
+    // catch_log(str);
 }
     // char str[35] = {'\0'};
     // strcat(str, INVITE_01);
@@ -103,7 +104,7 @@ int main(void)
     // }
     char* str = NULL;
     char** tokens = NULL;
-    write(fd, "[s0]>", 6); // TO IMPLEMENT WITH BACKUP RECOVERY/ CREATION
+    write(STDOUT_FILENO, "[s0]>", 5); // TO IMPLEMENT WITH BACKUP RECOVERY/ CREATION
     // catch_log("[s0]>ok\n");
     init_my_readline();
     while ((str = my_readline(fd)) != NULL)
@@ -114,7 +115,8 @@ int main(void)
         tokens = dirty_split(str , 1); //draw me like one of your argv!
         flag_parser(cmd_count, tokens, VALID_ARG, getopt_ptr);
         node = execute_cmd(getopt_ptr, node);
-        if (node == NULL) {
+        if (node == NULL)
+        {
             return EXIT_SUCCESS;
         }
         // fd = quit_cmd(getopt_ptr->path_arr[0], node);

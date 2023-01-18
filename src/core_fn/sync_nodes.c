@@ -8,7 +8,7 @@ node_t* sync_nodes(node_t* head)
     node_t* tmp_cpy = NULL;
     char str[4] = OK;
     catch_log(str);
-    write(STDIN_FILENO, str, my_strlen(str) + 1);
+    write(STDOUT_FILENO, str, my_strlen(str) + 1);
     while (tmp_n_a != NULL)
     {
         tmp_n_b = head;

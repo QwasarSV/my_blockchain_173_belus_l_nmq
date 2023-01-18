@@ -14,7 +14,7 @@ node_t* add_node(node_t* head, my_getopt_t* getopt_ptr)
     {
         char str[4] = OK;
         catch_log(str);
-        write(STDOUT_FILENO, str, my_strlen(str) + 1);
+        write(STDOUT_FILENO, str, my_strlen(str) );
         tmp = create_new_node(nid, NULL);
         head = insert_at_head(&head, tmp);
         head->prev_bid = consensus_check(head);
