@@ -1,6 +1,7 @@
 #include "../../include/main_header.h"
 #include <string.h>
-char* print_llist_n_n1(node_t* n_head, bool state)
+
+void print_llist_n_n1(node_t* n_head, bool state)
 {
     char str[50] = {'\0'};
     char buff[32] = {'\0'};
@@ -23,6 +24,6 @@ char* print_llist_n_n1(node_t* n_head, bool state)
         tmp = tmp->next;
     }
     catch_log(str);
-    write(STDIN_FILENO, str, my_strlen(str));
+    write(STDOUT_FILENO, str, my_strlen(str));
 }
         //  printf("node %i ; last BID:%i\n",tmp->nid, tmp->prev_bid);

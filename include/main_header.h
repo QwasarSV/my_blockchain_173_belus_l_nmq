@@ -51,8 +51,8 @@
 #define NODE_DNT_EXIST "4: node doesn't exists\n"
 #define BLOCK_DNT_EXIST "5: block doesn't exists\n"
 #define CMD_ERROR "6: command not found\n"
-#define OK "ok\n"
-#define NOK "nok\n"
+#define OK "OK\n"
+#define NOK "NOK\n"
 
 #ifndef STRUCT_NODE
 #define STRUCT_NODE
@@ -191,7 +191,7 @@ node_t* add_block(node_t* head, my_getopt_t* getopt_ptr);
 node_t* add_node(node_t* head, my_getopt_t* getopt_ptr);
 void rm_block(node_t* head, my_getopt_t* getopt_ptr);
 void rm_node(node_t** head, my_getopt_t* getopt_ptr);
-char* print_llist_n_n1(node_t* n_head, bool state);
+void print_llist_n_n1(node_t* n_head, bool state);
 void test_print_list(node_t *head, char* str);
 node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head);
 // gandalf - unit test - log
