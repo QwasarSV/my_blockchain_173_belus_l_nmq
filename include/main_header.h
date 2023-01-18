@@ -31,14 +31,14 @@
 #define BADCHAR (int)'?'
 #define BADARG (int)':'
 #define VALID_ARG "-l"
-#define BLOCK_ADD 2760430684300
-#define BLOCK_RM 104389829426
-#define NODE_ADD 89046511139
-#define NODE_RM 3367773885
-#define SYNC 3545755
-#define LS 3463
-#define QUIT 3482191
-#define TOKEN_MAX 7
+#define BLOCK_ADD   2060171284
+#define BLOCK_RM    1112149039
+#define NODE_ADD    233620095
+#define NODE_RM     381772396
+#define SYNC        1491471
+#define LS          146
+#define QUIT        2044899
+#define TOKEN_MAX   7
 
 #define INVITE_OBRACKET '['
 #define INVITE_DIFF '-'
@@ -53,8 +53,6 @@
 #define CMD_ERROR "6: command not found\n"
 #define OK "ok\n"
 #define NOK "nok\n"
-#define OPEN 1
-#define CLOSE 0
 
 #ifndef STRUCT_NODE
 #define STRUCT_NODE
@@ -140,8 +138,9 @@ int my_getopt(char** argv, char* valid_args, my_getopt_t* getopt_ptr);
 void n_state(char opt, my_getopt_t *getopt_ptr, char** argv);
 
 // hash strings
-long long hash_string(char** arr, int arr_size, int arr_max_range);
-bool check_hash(long long ash);
+int hash_string(char** arr, int arr_size, int arr_max_range);
+int my_pow(int val, int exp);
+bool check_hash(int hash);
 
 //my_split.h
 
@@ -191,7 +190,7 @@ int quit_cmd(char* cmd, node_t* head);
 node_t* add_block(node_t* head, my_getopt_t* getopt_ptr);
 node_t* add_node(node_t* head, my_getopt_t* getopt_ptr);
 void rm_block(node_t* head, my_getopt_t* getopt_ptr);
-void rm_node(node_t* head, my_getopt_t* getopt_ptr);
+void rm_node(node_t** head, my_getopt_t* getopt_ptr);
 char* print_llist_n_n1(node_t* n_head, bool state);
 void test_print_list(node_t *head, char* str);
 node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head);

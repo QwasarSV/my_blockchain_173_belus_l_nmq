@@ -76,6 +76,7 @@ void new_cmd(node_t* head) // test function to recode
 {
     if (head == NULL)
     {
+        invite_prmt(0, 0);
         return;
     }
     int diff = diff_block(head);

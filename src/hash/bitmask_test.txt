@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void my_revswap(char *ptr, char*ptr1, char tmp_char)
+void my_revswap (char *ptr, char*ptr1, char tmp_char)
 {
     while(ptr1 < ptr)
     {
@@ -79,19 +79,6 @@ int my_ctoi(char *string, size_t n)
     }
     return num;
 }
-
-#define BLOCK 93832333
-#define BLOCK_ADD 2760430684300
-#define BLOCK_RM 104389829426
-#define NODE 3386882
-#define NODE_ADD 89046511139
-#define NODE_RM 3367773885
-#define ADD 96417
-#define REMOVE 3643
-#define SYNC 3545755
-#define LS 3463
-#define QUIT 3482191
-
 long dec_to_bin(int val)
 {
     long bin = 0;
@@ -107,21 +94,49 @@ long dec_to_bin(int val)
     }
     return bin;
 }
-//336855108
-int main(void)
-{    
-    char str[] = "quit";
-    int key = 31;
-    unsigned long int mask = 0;
-    int index = 0;
-    long long int hash = 0;
-    while (str[index] != '\0')
+
+int my_pow(int val, int exp)
+{
+    int result = 1;
+    while (exp > 0)
     {
-        hash = key * hash + str[index];
-        index += 1;
+        if (exp % 2 == 1)
+        {
+            result *= val;
+        }
+        exp /= 2;
+        val *= val;
     }
-    printf("hash is : |%lli|\n",hash);
-    return 0;
+    return result;
+}
+
+#define BLOCK_ADD   2060171284
+#define BLOCK_RM    1112149039
+#define NODE_ADD    233620095
+#define NODE_RM     381772396
+#define SYNC        1491471
+#define LS          146
+#define QUIT        2044899
+
+
+int main(void)
+{
+  char str[] = "addblock"; // result is negatif
+  // char str[] = "helloworld";
+  int key = 31;
+  int hash = 0;
+  int index = 0;
+  while (str[index] != '\0')
+  {
+    hash = key * hash + my_pow(str[index], index); //key*hash + pow(str[index], index) // math.h pow is double so its making issues by promoting initial variable
+    index += 1;
+  }
+  printf("%i\n", hash);
+  hash = hash & 0x7fffffff;
+  // hash /= hashtable;
+  //store on table
+  printf("%i\n", hash);
+  return 0;
 }
 
 
