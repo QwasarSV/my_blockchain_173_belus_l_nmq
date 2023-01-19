@@ -80,7 +80,7 @@ void new_cmd(node_t* head) // test function to recode
         invite_prmt(0, 0);
         return;
     }
-    int diff = diff_block(head);
+    int diff = diff_block_02(head);
     int count = node_count(head);
     if (count >= 0 && diff == 0)
     {
@@ -88,7 +88,7 @@ void new_cmd(node_t* head) // test function to recode
     }
     else
     {
-        invite_prmt(diff, 1);
+        invite_prmt(count, 1);
     }
 }
 
@@ -115,10 +115,10 @@ int main(void)
         tokens = dirty_split(str , 1); //draw me like one of your argv!
         flag_parser(cmd_count, tokens, VALID_ARG, getopt_ptr);
         node = execute_cmd(getopt_ptr, node);
-        if (node == NULL)
-        {
-            return EXIT_SUCCESS;
-        }
+        // if (node == NULL)
+        // {
+        //     return EXIT_SUCCESS;
+        // }
         // fd = quit_cmd(getopt_ptr->path_arr[0], node);
         if (getopt_ptr->exit_status == true)
         {
@@ -134,7 +134,7 @@ int main(void)
     }
     // print_log();
     //free_readline();
-    return 0;
+    return EXIT_SUCCESS;
 }
         // printf("main.c - readline_str : |%s|\n", str);
         // printf("main.c - cmd_count : %i\n",cmd_count);

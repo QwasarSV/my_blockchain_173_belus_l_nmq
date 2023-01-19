@@ -6,6 +6,7 @@ void rm_block(node_t* head, my_getopt_t* getopt_ptr)
 {
     node_t* tmp = head; 
     int bid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
+    int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
     if (is_block_on_network(head, bid) == false)
     {
         write(STDOUT_FILENO, NOK, my_strlen(NOK));
@@ -13,10 +14,14 @@ void rm_block(node_t* head, my_getopt_t* getopt_ptr)
     }
     else
     {
-        while(tmp != NULL)
+        while(tmp != NULL && tmp->nid != nid)
         {
-            delete_block_on_bid(&tmp->head, bid);
+
             tmp = tmp->next;
         }
+        char str[4] = OK;
+        catch_log(str);
+        write(STDOUT_FILENO, str, my_strlen(str) );
+        delete_block_on_bid(&tmp->head, bid);
     }
 }

@@ -11,6 +11,9 @@ void rm_node(node_t** head, my_getopt_t* getopt_ptr)
     }
     else
     {
+        char str[4] = OK;
+        catch_log(str);
+        write(STDOUT_FILENO, str, my_strlen(str) );
         delete_node_on_nid(head, nid);
     }
 }

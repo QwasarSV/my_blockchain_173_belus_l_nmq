@@ -7,8 +7,8 @@ node_t* sync_nodes(node_t* head)
     node_t* tmp_b = NULL;
     node_t* tmp_cpy = NULL;
     char str[4] = OK;
-    catch_log(str);
-    write(STDOUT_FILENO, str, my_strlen(str) + 1);
+    // catch_log(str);
+    write(STDOUT_FILENO, str, my_strlen(str));
     while (tmp_n_a != NULL)
     {
         tmp_n_b = head;
@@ -22,7 +22,8 @@ node_t* sync_nodes(node_t* head)
                 {
                 // printf("block on chain check : %i against node %i\n", tmp_b->bid, tmp_n_b->nid);
                     tmp_cpy = create_cpy_block(tmp_b);
-                    tmp_n_b->head = insert_at_head(&tmp_n_b->head, tmp_cpy);
+                   tmp_n_b->head = insert_after_node(tmp_n_b->head, tmp_cpy);
+                    // tmp_n_b->head = insert_at_head(&tmp_n_b->head, tmp_cpy);
                 }
                 tmp_b = tmp_b->next;
             }
@@ -30,6 +31,38 @@ node_t* sync_nodes(node_t* head)
         }
         tmp_n_a = tmp_n_a->next;
     }
-    sort_bid(head);
+    // sort_bid(head);
     return head;
 }
+
+int diff_block_02(node_t* head)
+{
+    node_t* tmp_n_a = head;
+    node_t* tmp_n_b = head;
+    node_t* tmp_b = NULL;
+    int count = 0;
+    while (tmp_n_a != NULL)
+    {
+        tmp_n_b = head;
+        while (tmp_n_b != NULL)
+        {
+            tmp_b = tmp_n_a->head;
+            // printf("working on node: %i with info from node %i \n", tmp_n_b->nid, tmp_n_a->nid); insert next condition if tmp_n_a == tmp_n_b
+            while (tmp_b != NULL)
+            {
+                if (!is_block_on_chain(tmp_n_b->head, tmp_b))
+                {
+                    count = node_count(head);
+                    return count;
+                // printf("block on chain check : %i against node %i\n", tmp_b->bid, tmp_n_b->nid);
+                }
+                tmp_b = tmp_b->next;
+            }
+            tmp_n_b = tmp_n_b->next;
+        }
+        tmp_n_a = tmp_n_a->next;
+    }
+    return count;
+}
+
+

@@ -3,7 +3,7 @@
 int node_count(node_t *head)
 {
     int count = 0;
-    if(head == NULL)
+    if (head == NULL)
     {
         return count;
     }

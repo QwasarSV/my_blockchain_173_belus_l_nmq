@@ -157,9 +157,9 @@ node_t* create_block(node_t* head, int nid, int bid);
 node_t* create_new_block(int value, int prev_bid);
 node_t* create_new_node(int value, node_t *head);
 node_t* insert_at_head(node_t** head, node_t* node_to_insert);
-
+node_t* insert_after_node(node_t* node_to_insert, node_t* new_node);
+void reverse_node_order(node_t** head);
 node_t* swap(node_t* head, int node_index1, int node_index2);
-
 void print_and_free_llist(node_t* n_head);
 void free_node(node_t* head);
 int node_count(node_t *head);
@@ -198,4 +198,5 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head);
 int my_realloc_log(int size);
 void catch_log(char* str);
 void print_log();
+int diff_block_02(node_t* head);
 #endif
