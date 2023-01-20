@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void n_state(char opt, my_getopt_t *getopt_ptr, char** argv)
 {

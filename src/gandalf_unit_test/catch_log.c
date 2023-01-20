@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 char* log_buff;
 int my_realloc_log(int size)

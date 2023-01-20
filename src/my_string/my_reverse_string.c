@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 
 void my_reverse_string(char* str)
@@ -11,7 +11,7 @@ void my_reverse_string(char* str)
         tmp_char = end[rev];
         end[rev] = start[index];
         start[index] = tmp_char;
-        index++;
-        rev--; 
+        index += 1;
+        rev -= 1; 
     }
 }

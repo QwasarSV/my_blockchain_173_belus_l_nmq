@@ -1,6 +1,5 @@
-#include "../include/main_header.h"
+#include <main_header.h>
 #include <string.h>
-#include <unistd.h>
 // sync four part function
 /*
     send block to all nodes
@@ -91,6 +90,9 @@ void new_cmd(node_t* head) // test function to recode
         invite_prmt(count, 1);
     }
 }
+
+
+
 
 int main(void) 
 {

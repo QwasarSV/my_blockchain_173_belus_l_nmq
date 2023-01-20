@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void free_node(node_t* head)
 {

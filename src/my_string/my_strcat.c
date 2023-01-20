@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 char* my_strcat(char* str_dest, char* str_src)
 {

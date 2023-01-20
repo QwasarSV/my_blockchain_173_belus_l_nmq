@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 
 // parsed value from argv individual char to write() is an issue.

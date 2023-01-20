@@ -14,4 +14,5 @@ node_t* insert_after_node(node_t* node_to_insert, node_t* new_node)
         tmp = tmp->next;
     }
     tmp->next = new_node;
+    return node_to_insert;
 }

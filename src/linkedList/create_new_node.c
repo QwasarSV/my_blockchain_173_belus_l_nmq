@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 node_t* create_new_node(int value, node_t *head)
 {

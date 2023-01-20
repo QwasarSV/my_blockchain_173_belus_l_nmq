@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 node_t* sync_nodes(node_t* head)
 {

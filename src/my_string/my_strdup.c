@@ -1,5 +1,4 @@
-#include "../../include/main_header.h"
-
+#include <main_header.h>
 
 char* my_strdup(char* str)
 {    

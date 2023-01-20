@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 #include <string.h>
 #define MAX_TOKENS 20
 

@@ -1,5 +1,4 @@
-#include <unistd.h>
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 
 void rm_block(node_t* head, my_getopt_t* getopt_ptr)

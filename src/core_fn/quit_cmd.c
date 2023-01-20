@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 int quit_cmd(char* cmd, node_t* head)
 {

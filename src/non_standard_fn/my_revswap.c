@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void my_revswap(char *ptr, char*ptr1, char tmp_char)
 {

@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void delete_node_on_nid(node_t **head, int nid)
 {

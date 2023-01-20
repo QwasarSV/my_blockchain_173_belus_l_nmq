@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void dynamic_malloc(int argc, char** argv, my_getopt_t *getopt_ptr)
 {    

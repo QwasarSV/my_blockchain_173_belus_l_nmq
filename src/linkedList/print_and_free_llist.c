@@ -1,5 +1,4 @@
-#include "../../include/main_header.h"
-#include <stdio.h>
+#include <main_header.h>
 
 void print_and_free_llist(node_t* n_head) //, my_getopt_t *getopt_ptr
 {

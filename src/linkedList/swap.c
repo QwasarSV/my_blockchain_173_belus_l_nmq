@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 node_t* swap(node_t* head, int node_index1, int node_index2)
 {

@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 node_t* insert_at_head(node_t** head, node_t* node_to_insert)
 {

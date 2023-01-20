@@ -1,5 +1,4 @@
-#include <unistd.h>
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 
 node_t* add_block(node_t* head, my_getopt_t* getopt_ptr)

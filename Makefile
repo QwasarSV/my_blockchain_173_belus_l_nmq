@@ -5,6 +5,8 @@ SRC_DIRS := ./src
 CFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
 LDFLAGS = $(CFLAGS)
 
+export C_INCLUDE_PATH=include/
+
 # Find all the C files we want to compile
 # Note the single quotes around the * expressions. Make will incorrectly expand these otherwise.
 SRCS := $(shell find $(SRC_DIRS) -name '*.c')

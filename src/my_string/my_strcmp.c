@@ -1,6 +1,4 @@
-#include "../../include/main_header.h"
-
-
+#include <main_header.h>
 
 int my_strcmp(char* str1, char* str2)
 {

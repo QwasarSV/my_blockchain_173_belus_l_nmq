@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void fill_bool_array(bool* bool_arr, int len)
 {

@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 int READLINE_READ_SIZE = 25;
 char* rl_buff;

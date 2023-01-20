@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <main_header.h>
 
 void my_bzero(void *generic_ptr, size_t n)
 { // void* p ; generic pointer type. can be converted to any type without "explicit" cast,  // size_t is for array indexing and loop counting

@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 bool is_block_on_chain(node_t* block_head, node_t* block)
 {

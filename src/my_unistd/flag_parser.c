@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 int flag_parser(int argc, char** argv, char* valid_args, my_getopt_t* getopt_ptr)
 {

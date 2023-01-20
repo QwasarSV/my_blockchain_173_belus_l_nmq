@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void set_last_bid(node_t* head, int bid)
 {

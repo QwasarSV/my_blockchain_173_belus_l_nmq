@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 #include <string.h>
 
 void print_llist_n_n1(node_t* n_head, bool state)

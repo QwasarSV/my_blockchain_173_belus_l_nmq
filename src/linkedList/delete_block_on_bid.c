@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void delete_block_on_bid(node_t **head, int bid)
 {

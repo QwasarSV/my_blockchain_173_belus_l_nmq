@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 void init_getopt(my_getopt_t* getopt_ptr, char* valid_args)
 {

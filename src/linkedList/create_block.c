@@ -1,4 +1,4 @@
-#include "../../include/main_header.h"
+#include <main_header.h>
 
 node_t* create_block(node_t* head, int nid, int bid)
 {
