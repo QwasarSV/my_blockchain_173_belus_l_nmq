@@ -12,7 +12,7 @@ int find_ch(char* str)
     return index;
 }
 
-char** dirty_split(char* str, int start_pos)
+char** dirty_split(char* str, int start_pos, char ch)
 {
     char* tmp = str;
     char** tokens = malloc(sizeof(char*)*MAX_TOKENS);
@@ -20,7 +20,7 @@ char** dirty_split(char* str, int start_pos)
     char* end;
     int index = start_pos;
     int pos = 0;
-    while ((end = strchr(start, ' ')) != NULL)
+    while ((end = strchr(start, ch)) != NULL)
     {
         pos = find_ch(start);
         start[pos] = '\0';

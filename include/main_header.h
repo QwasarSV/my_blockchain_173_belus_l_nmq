@@ -12,6 +12,7 @@
 #include <linked_list.h>
 #include <my_string.h>
 #include <my_readline.h>
+#include <my_blockchain.h>
 
 // #ifndef TRANSACTION_STRUCT
 // #define TRANSACTION_STRUCT
@@ -59,7 +60,7 @@
 
 //my_split.h
 
-char** dirty_split(char* str, int start_pos);
+char** dirty_split(char* str, int start_pos, char ch);
 
 //stdlib.h
 int my_ctoi(char *string, size_t n);
@@ -84,8 +85,7 @@ void catch_log(char* str);
 void print_log();
 int diff_block_02(node_t* head);
 
-
 //backup
-void create_backup(node_t* head);
-
+void serialize(node_t* head);
+node_t* deserialize(node_t* head);
 #endif

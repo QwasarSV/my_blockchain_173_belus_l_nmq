@@ -23,7 +23,7 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
         sync_nodes(head);
         break;
     case QUIT:
-        create_backup(head);
+        serialize(head);
         print_and_free_llist(head);
         getopt_ptr->exit_status = true;
         break;

@@ -1,6 +1,5 @@
 #include <main_header.h>
 
-
 node_t* add_block(node_t* head, my_getopt_t* getopt_ptr)
 {
     int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
@@ -19,7 +18,6 @@ node_t* add_block(node_t* head, my_getopt_t* getopt_ptr)
     // else
     {
         char str[4] = OK;
-        catch_log(str);
         write(STDOUT_FILENO, str, my_strlen(str));
         head = create_block(head, nid, bid);
         set_last_bid(head, bid);

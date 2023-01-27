@@ -91,30 +91,23 @@ void new_cmd(node_t* head) // test function to recode
     }
 }
 
-
-
-
 int main(void) 
 {
     int cmd_count = 0;
     int fd = STDIN_FILENO;
     node_t* node = NULL;
     my_getopt_t* getopt_ptr = NULL;
-    //open("backup.txt", O_CREAT || O_APPEND, 0644);
-    // while ((initiale_size = read(fd, &node, READLINE_READ_SIZE)))
-    // {
-    // }
+    node = deserialize(node);
     char* str = NULL;
     char** tokens = NULL;
-    write(STDOUT_FILENO, "[s0]>", 5); // TO IMPLEMENT WITH BACKUP RECOVERY/ CREATION
-    // catch_log("[s0]>ok\n");
+    new_cmd(node);
     init_my_readline();
     while ((str = my_readline(fd)) != NULL)
     {
         getopt_ptr = malloc(sizeof(my_getopt_t));
         init_getopt(getopt_ptr, VALID_ARG);
         cmd_count = count_cmd(str) + 2;
-        tokens = dirty_split(str , 1); //draw me like one of your argv!
+        tokens = dirty_split(str , 1, ' '); //draw me like one of your argv!
         flag_parser(cmd_count, tokens, VALID_ARG, getopt_ptr);
         node = execute_cmd(getopt_ptr, node);
         // if (node == NULL)
