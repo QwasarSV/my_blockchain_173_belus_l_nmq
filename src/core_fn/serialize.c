@@ -8,7 +8,7 @@ void serialize(node_t* head)
     char str[50] = {'\0'};
     char buff[32] = {'\0'};
     int size = 0;
-    int index = 0;
+    int count = 0;
     node_t *tmp = head;
     while (tmp != NULL)
     {
@@ -44,15 +44,14 @@ void serialize(node_t* head)
 node_t* deserialize_block(node_t* head, char* str, int nid)
 {
 	char** tokens = NULL;
-	tokens = dirty_split(str, 0, ',');
-	int index = 0;
+	int count = count_cmd(str);
+    tokens = dirty_split(str, 0, ',');
 	int bid = 0;
-	while (index < 2)
+	while (count >= 0)
 	{
-		bid = my_ctoi(tokens[index], my_strlen(tokens[index]));		
-		printf("create block is |%i|\n", bid);
+		bid = my_ctoi(tokens[count], my_strlen(tokens[count]));
 		head = create_block(head, nid, bid);
-		index += 1;
+		count -= 1;
 	}
 	free(tokens);
 	return head;
@@ -73,17 +72,13 @@ node_t* deserialize(node_t* head)
     
     while ((str = my_readline(fd)) != NULL)
     {
-        printf("recovery file is : %s\n", str);
-   	tokens = dirty_split(str, 1, ':');
-	nid = my_ctoi(tokens[1], strlen(tokens[1]));
-	tmp = create_new_node(nid, head);
+   	    tokens = dirty_split(str, 1, ':');
+	    nid = my_ctoi(tokens[1], strlen(tokens[1]));
+	    tmp = create_new_node(nid, head);
         head = insert_after_node(head, tmp);	
-	printf("block tokens are |%s|\n", &tokens[2][1]);
-	printf("block token is %s\n", tokens[2]);
-	head = deserialize_block(head, &tokens[2][1], nid);
-	printf("node  token is : %s converted into %i\n", tokens[1], nid);
-	free(tokens);
-	free(str);
+	    head = deserialize_block(head, &tokens[2][1], nid);
+	    free(tokens);
+	    free(str);
     }
     close(fd);
     return head;

@@ -1,6 +1,6 @@
 #include <main_header.h>
 
-int count_cmd(char*str)
+int count_cmd(char* str)
 {
     int index = 0;
     int counter = 0;

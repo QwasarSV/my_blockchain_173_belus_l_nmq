@@ -2,10 +2,10 @@
 #include <string.h>
 #define MAX_TOKENS 20
 
-int find_ch(char* str)
+int find_ch(char* str, char ch)
 {
     int index = 0;
-    while (str[index] != ' ' && str[index] != '\0')
+    while (str[index] != ch && str[index] != '\0')
     {
             index += 1;
     }
@@ -22,7 +22,7 @@ char** dirty_split(char* str, int start_pos, char ch)
     int pos = 0;
     while ((end = strchr(start, ch)) != NULL)
     {
-        pos = find_ch(start);
+        pos = find_ch(start, ch);
         start[pos] = '\0';
         tokens[index] = start;
         index += 1;

@@ -70,7 +70,6 @@ void my_revswap(char *ptr, char*ptr1, char tmp_char);
 //my_blockchain
 
 int count_cmd(char*str);
-int quit_cmd(char* cmd, node_t* head);
 node_t* add_block(node_t* head, my_getopt_t* getopt_ptr);
 node_t* add_node(node_t* head, my_getopt_t* getopt_ptr);
 void rm_block(node_t* head, my_getopt_t* getopt_ptr);
@@ -78,12 +77,18 @@ void rm_node(node_t** head, my_getopt_t* getopt_ptr);
 void print_llist_n_n1(node_t* n_head, bool state);
 void test_print_list(node_t *head, char* str);
 node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head);
-
+int error_handler(my_getopt_t* getopt_ptr, node_t* head);
 // gandalf - unit test - log
 int my_realloc_log(int size);
 void catch_log(char* str);
 void print_log();
 int diff_block_02(node_t* head);
+
+//error management 
+int error_add_block(node_t* head, my_getopt_t* getopt_ptr);
+int error_add_node(node_t* head, my_getopt_t* getopt_ptr);
+int error_rm_block(node_t* head, my_getopt_t* getopt_ptr);
+int error_rm_node(node_t** head, my_getopt_t* getopt_ptr);
 
 //backup
 void serialize(node_t* head);
