@@ -19,7 +19,7 @@ int error_handler(my_getopt_t* getopt_ptr, node_t* head)
     case QUIT:
         return EXIT_SUCCESS;
     default:
-        write(STDOUT_FILENO, CMD_ERROR, my_strlen(CMD_ERROR));
+        write(STDERR_FILENO, CMD_ERROR, my_strlen(CMD_ERROR));
         return EXIT_FAILURE;
     }
     return EXIT_FAILURE;

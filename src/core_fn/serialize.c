@@ -1,29 +1,33 @@
 #include <main_header.h>
-#include <string.h>
 
 void serialize(node_t* head)
 {
     int fd = 0 ;
     fd  = open("list.txt", O_CREAT | O_RDWR, 0644);
-    char str[50] = {'\0'};
-    char buff[32] = {'\0'};
-    int size = 0;
-    int count = 0;
+    char* str = malloc(sizeof(char) * SIZE_NID);
+    my_bzero(str, SIZE_NID);
+    char buff[SIZE_NID] = {'\0'};
+    int pos = 0;
     node_t *tmp = head;
     while (tmp != NULL)
     {
         itoa(tmp->nid, buff, 10);
-        strcat(str, buff);
-        size = my_strlen(str);
-        str[size] = ':';
+        my_strcat(str, buff);
+        // size = my_strlen(str);
+        // str[size ] = ':';
+        my_strcat(str, ":");
         if (tmp->head != NULL )
         {
-            test_print_list(tmp->head, str);
+            str = print_block(tmp->head, str);
         }
-        size = my_strlen(str);
-        str[size] = '\n';
-        bzero(buff, my_strlen(buff));
+        pos = my_strlen(str);
+        str[pos] = '\n';
+        my_bzero(buff, my_strlen(buff));
         tmp = tmp->next;
+        if (tmp != NULL)
+        {
+            str = my_realloc(str, SIZE_NID);
+        }
     }
     write(fd, str, my_strlen(str));
     close(fd);
@@ -49,8 +53,7 @@ node_t* deserialize_block(node_t* head, char* str, int nid)
 	int bid = 0;
 	while (count >= 0)
 	{
-		bid = my_ctoi(tokens[count], my_strlen(tokens[count]));
-		head = create_block(head, nid, bid);
+		head = create_block(head, nid, tokens[count]);
 		count -= 1;
 	}
 	free(tokens);
@@ -73,7 +76,7 @@ node_t* deserialize(node_t* head)
     while ((str = my_readline(fd)) != NULL)
     {
    	    tokens = dirty_split(str, 1, ':');
-	    nid = my_ctoi(tokens[1], strlen(tokens[1]));
+	    nid = my_ctoi(tokens[1], my_strlen(tokens[1]));
 	    tmp = create_new_node(nid, head);
         head = insert_after_node(head, tmp);	
 	    head = deserialize_block(head, &tokens[2][1], nid);

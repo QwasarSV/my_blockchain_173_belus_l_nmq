@@ -6,7 +6,7 @@ bool is_block_on_chain(node_t* block_head, node_t* block)
 
     while (tmp != NULL)
     {
-        if (block->bid == tmp->bid)
+        if (my_strcmp(block->bid, tmp->bid) == 0)
         {
             return true;
         }
@@ -15,13 +15,12 @@ bool is_block_on_chain(node_t* block_head, node_t* block)
     return false;
 }
 
-bool check_bid(node_t* block_head, int bid)
+bool check_bid(node_t* block_head, char* bid)
 {
     node_t* tmp = block_head;
-
     while (tmp != NULL)
     {
-        if (bid == tmp->bid)
+        if (my_strcmp(bid, tmp->bid) == 0)
         {
             return true;
         }
@@ -45,7 +44,7 @@ bool is_node_on_network(node_t* node_head, int nid)
     return false;
 }
 
-bool is_block_on_network(node_t* node_head, int bid)
+bool is_block_on_network(node_t* node_head, char* bid)
 {
     node_t* tmp = node_head;
     bool result = false;
@@ -62,7 +61,7 @@ bool is_block_on_network(node_t* node_head, int bid)
     return result;
 }
 
-bool is_block_on_node(node_t* node_head, int nid, int bid)
+bool is_block_on_node(node_t* node_head, int nid, char* bid)
 {
     node_t* tmp = node_head;
 

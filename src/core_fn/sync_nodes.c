@@ -6,9 +6,7 @@ node_t* sync_nodes(node_t* head)
     node_t* tmp_n_b = head;
     node_t* tmp_b = NULL;
     node_t* tmp_cpy = NULL;
-    char str[4] = OK;
-    // catch_log(str);
-    write(STDOUT_FILENO, str, my_strlen(str));
+    write(STDOUT_FILENO, OK, my_strlen(OK));
     while (tmp_n_a != NULL)
     {
         tmp_n_b = head;
@@ -31,7 +29,7 @@ node_t* sync_nodes(node_t* head)
         }
         tmp_n_a = tmp_n_a->next;
     }
-    // sort_bid(head);
+    // sort_bid(head); // commmented because fn goes against gandalf test. 
     return head;
 }
 
@@ -64,5 +62,3 @@ int diff_block_02(node_t* head)
     }
     return count;
 }
-
-

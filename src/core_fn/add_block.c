@@ -5,8 +5,7 @@ int error_add_block(node_t* head, my_getopt_t* getopt_ptr)
     int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
     if (is_node_on_network(head, nid) == false)
     {
-        write(STDOUT_FILENO, NOK, my_strlen(NOK));
-        write(STDOUT_FILENO, NODE_DNT_EXIST, my_strlen(NODE_DNT_EXIST));
+        write(STDERR_FILENO, NODE_DNT_EXIST, my_strlen(NODE_DNT_EXIST));
         return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
@@ -15,12 +14,10 @@ int error_add_block(node_t* head, my_getopt_t* getopt_ptr)
 node_t* add_block(node_t* head, my_getopt_t* getopt_ptr)
 {
     int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
-    int bid = my_ctoi(getopt_ptr->path_arr[2], my_strlen(getopt_ptr->path_arr[2]));
     {
-        char str[4] = OK;
-        write(STDOUT_FILENO, str, my_strlen(str));
-        head = create_block(head, nid, bid);
-        set_last_bid(head, bid);
+        write(STDOUT_FILENO, OK, my_strlen(OK));
+        head = create_block(head, nid, getopt_ptr->path_arr[2]);
+        set_last_bid(head, getopt_ptr->path_arr[2]);
     }
     return head;
 }

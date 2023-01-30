@@ -1,6 +1,6 @@
 #include <main_header.h>
 
-node_t* create_block(node_t* head, int nid, int bid)
+node_t* create_block(node_t* head, int nid, char* bid)
 {
     node_t* tmp = head;
     node_t* tmp_block= NULL;

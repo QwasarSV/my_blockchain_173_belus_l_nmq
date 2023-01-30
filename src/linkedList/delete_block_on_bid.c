@@ -1,16 +1,16 @@
 #include <main_header.h>
 
-void delete_block_on_bid(node_t **head, int bid)
+void delete_block_on_bid(node_t** head, char* bid)
 {
     node_t *tmp = *head;
     node_t *prev;
-    if (tmp != NULL && tmp->bid == bid)
+    if (tmp != NULL && my_strcmp(tmp->bid, bid) == 0)
     {
         *head = tmp->next;
         free(tmp);
         return;
     }
-    while (tmp != NULL && tmp->bid != bid)
+    while (tmp != NULL && my_strcmp(tmp->bid, bid) != 0)
     {
         prev = tmp;
         tmp = tmp->next;
@@ -23,7 +23,7 @@ void delete_block_on_bid(node_t **head, int bid)
     free(tmp);
 }
 
-void delete_block_on_node(node_t* head, int bid, int nid)
+void delete_block_on_node(node_t* head, char* bid, int nid)
 {
     node_t* tmp = head;
     while (tmp != NULL)
