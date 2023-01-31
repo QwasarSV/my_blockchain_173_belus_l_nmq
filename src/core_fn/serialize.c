@@ -2,7 +2,7 @@
 
 void serialize(node_t* head)
 {
-    int fd = 0 ;
+    int fd = 0;
     fd  = open("list.txt", O_CREAT | O_RDWR, 0644);
     char* str = malloc(sizeof(char) * SIZE_NID);
     my_bzero(str, SIZE_NID);
@@ -13,8 +13,6 @@ void serialize(node_t* head)
     {
         itoa(tmp->nid, buff, 10);
         my_strcat(str, buff);
-        // size = my_strlen(str);
-        // str[size ] = ':';
         my_strcat(str, ":");
         if (tmp->head != NULL )
         {
@@ -32,18 +30,6 @@ void serialize(node_t* head)
     write(fd, str, my_strlen(str));
     close(fd);
 }
-    // node_t* tmp = head;
-    // int fd = 0;
-    // printf("creating backup...");
-    // // fd = open("backup.txt", O_CREAT | O_APPEND, 0644);
-    // FILE* file = fopen("list.txt", "w");
-    // while (tmp != NULL)
-    // {
-    //     // write(fd, head, sizeof(head));
-    //     fprintf(file,"%d, ", tmp->nid);
-    //     tmp = tmp->next;
-    // }
-    // fclose(file);
 
 node_t* deserialize_block(node_t* head, char* str, int nid)
 {
@@ -53,7 +39,14 @@ node_t* deserialize_block(node_t* head, char* str, int nid)
 	int bid = 0;
 	while (count >= 0)
 	{
-		head = create_block(head, nid, tokens[count]);
+        if (tokens[count][0] == ' ')
+        {
+            head = create_block(head, nid, &tokens[count][1]);
+        }
+        else
+        {
+            head = create_block(head, nid, tokens[count]);
+        }
 		count -= 1;
 	}
 	free(tokens);
@@ -72,7 +65,6 @@ node_t* deserialize(node_t* head)
     char* str = NULL;
     char** tokens = NULL;
     int nid = 0;
-    
     while ((str = my_readline(fd)) != NULL)
     {
    	    tokens = dirty_split(str, 1, ':');

@@ -1,5 +1,4 @@
 #include <main_header.h>
-#include <string.h>
 // sync four part function
 /*
     send block to all nodes
@@ -54,23 +53,7 @@ void invite_prmt(int val, int type) // test function to recode
     my_strcat(str, buff);
     my_strcat(str, INVITE_CLOSE);
     write(STDOUT_FILENO, str, my_strlen(str));
-    // catch_log(str);
 }
-    // char str[35] = {'\0'};
-    // strcat(str, INVITE_01);
-    // if (type == 1)
-    // {
-    //     strcat(str, INVITE_DIFF);
-    // }
-    // else
-    // {
-    //     strcat(str, INVITE_SYNC);
-    // }
-    // char buff[12];
-    // their_itoa(val, buff, 10);
-    // strcat(str, buff);
-    // strcat(str, INVITE_OUT);
-    // write(STDIN_FILENO, str, 5);
 
 void new_cmd(node_t* head) // test function to recode
 {
@@ -93,6 +76,7 @@ void new_cmd(node_t* head) // test function to recode
 
 int main(void) 
 {
+    operating_sys();
     int cmd_count = 0;
     int fd = STDIN_FILENO;
     node_t* node = NULL;
@@ -127,13 +111,5 @@ int main(void)
         free(tokens);
         free(str);
     }
-    // print_log();
-    //free_readline();
     return EXIT_SUCCESS;
 }
-        // printf("main.c - readline_str : |%s|\n", str);
-        // printf("main.c - cmd_count : %i\n",cmd_count);
-        // printf("main.c - cmd_total : %i\n",cmd_count_total);
-        // printf("main.c - tokens    :%s\n",tokens[0]);
-        // printf("main.c - tokens    :%s\n",tokens[1]);
-        // printf("main.c - tokens    :%s\n",tokens[2]);

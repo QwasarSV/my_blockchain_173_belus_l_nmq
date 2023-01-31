@@ -1,5 +1,5 @@
-#ifndef __HEADERFILE_K_
-#define __HEADERFILE_K_
+#ifndef __HEADERFILE_A_
+#define __HEADERFILE_A_
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -13,6 +13,7 @@
 #include <my_string.h>
 #include <my_readline.h>
 #include <my_blockchain.h>
+#include <sys_check.h>
 
 // #ifndef TRANSACTION_STRUCT
 // #define TRANSACTION_STRUCT
@@ -50,11 +51,17 @@
 #define INVITE_SYNC 's'
 #define INVITE_CLOSE "]>"
 
+
 #define RESS_ERROR "NOK\n1: no more resources available on computer\n"
+#define RESS_ERROR_LEN 
 #define NODE_EXIST_ERROR "NOK\n2: this node already exists\n"
+#define NODE_EXIST_ERROR_LEN 32
 #define BLOCK_EXIST_ERROR "NOK\n3: this block already exists\n"
+#define BLOCK_EXIST_ERROR_LEN 
 #define NODE_DNT_EXIST "NOK\n4: node doesn't exists\n"
+#define NODE_DNT_EXIST_LEN 27
 #define BLOCK_DNT_EXIST "NOK\n5: block doesn't exists\n"
+#define BLOCK_DNT_EXIST_LEN 28
 #define CMD_ERROR "NOK\n6: command not found\n"
 #define OK "OK\n"
 

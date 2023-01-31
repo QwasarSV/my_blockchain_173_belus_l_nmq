@@ -1,5 +1,5 @@
-#ifndef __HEADERFILE_O_
-#define __HEADERFILE_O_
+#ifndef __HEADERFILE_C_
+#define __HEADERFILE_C_
 
 #include <main_header.h>
 

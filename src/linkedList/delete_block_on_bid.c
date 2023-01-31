@@ -7,6 +7,8 @@ void delete_block_on_bid(node_t** head, char* bid)
     if (tmp != NULL && my_strcmp(tmp->bid, bid) == 0)
     {
         *head = tmp->next;
+        free(tmp->bid);
+        free(tmp->prev_bid);
         free(tmp);
         return;
     }
@@ -20,6 +22,8 @@ void delete_block_on_bid(node_t** head, char* bid)
         return;
     }
     prev->next = tmp->next;
+    free(tmp->bid);
+    free(tmp->prev_bid);
     free(tmp);
 }
 

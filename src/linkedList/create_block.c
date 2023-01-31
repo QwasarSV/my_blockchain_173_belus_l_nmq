@@ -3,7 +3,7 @@
 node_t* create_block(node_t* head, int nid, char* bid)
 {
     node_t* tmp = head;
-    node_t* tmp_block= NULL;
+    node_t* tmp_block = NULL;
     while (tmp != NULL)
     {
         if (tmp->index == nid)

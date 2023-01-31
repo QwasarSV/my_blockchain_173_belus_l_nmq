@@ -37,17 +37,17 @@ int hash_string(char** arr, int arr_size, int arr_max_range)
     return hash;
 }
 
-bool check_hash(int hash)
-{
-    int index = 0;
-    int TOKEN_LIST[TOKEN_MAX] = {BLOCK_ADD, BLOCK_RM, NODE_ADD, NODE_RM, SYNC, QUIT};
-    while (index < TOKEN_MAX)
-    {
-        if (hash == TOKEN_LIST[index])
-        {
-            return true;
-        } 
-        index += 1;
-    }
-    return false;
-}
+// bool check_hash(int hash)
+// {
+//     int index = 0;
+//     int TOKEN_LIST[TOKEN_MAX] = {BLOCK_ADD, BLOCK_RM, NODE_ADD, NODE_RM, SYNC, QUIT};
+//     while (index < TOKEN_MAX)
+//     {
+//         if (hash == TOKEN_LIST[index])
+//         {
+//             return true;
+//         } 
+//         index += 1;
+//     }
+//     return false;
+// }
