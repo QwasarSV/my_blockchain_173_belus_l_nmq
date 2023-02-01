@@ -3,9 +3,6 @@
 
 #include <main_header.h>
 
-
-
-
 //node/block
 
 // node_t* create_block(node_t* head, int nid, int bid);

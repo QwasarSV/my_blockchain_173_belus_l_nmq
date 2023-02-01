@@ -9,26 +9,21 @@
 #define STRUCT_NODE
 struct node
 {
-    struct node* head;
-    struct node* next;
-    int index;
-    char bid[SIZE_BID];
-    char prev_bid[SIZE_BID];
-    int nid;
+    struct  node* head;
+    struct  node* next;
+    int     index;
+    char    bid[SIZE_BID];
+    char    prev_bid[SIZE_BID];
+    int     nid;
 };
 typedef struct node node_t;
 #endif
 
-
-
-
 #include <unistd.h>
 #include <stdlib.h>
-#include<fcntl.h>
-
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdbool.h>
-
 #include <my_unistd.h>
 #include <linked_list.h>
 #include <my_string.h>
@@ -88,38 +83,38 @@ typedef struct node node_t;
 
 //my_split.h
 
-char** dirty_split(char* str, int start_pos, char ch);
+char**  dirty_split(char* str, int start_pos, char ch);
 
 //stdlib.h
-int my_ctoi(char *string, size_t n);
-char* itoa(int value, char* result, int base);
-void my_revswap(char *ptr, char*ptr1, char tmp_char);
+int     my_ctoi(char *string, size_t n);
+char*   itoa(int value, char* result, int base);
+void    my_revswap(char *ptr, char*ptr1, char tmp_char);
 
 //my_blockchain
 
-int count_cmd(char*str);
+int     count_cmd(char*str);
 node_t* add_block(node_t* head, my_getopt_t* getopt_ptr);
 node_t* add_node(node_t* head, my_getopt_t* getopt_ptr);
-void rm_block(node_t* head, my_getopt_t* getopt_ptr);
-void rm_node(node_t** head, my_getopt_t* getopt_ptr);
-void print_llist_n_n1(node_t* n_head, bool state);
-char* print_block(node_t *head, char* str);
+void    rm_block(node_t* head, my_getopt_t* getopt_ptr);
+void    rm_node(node_t** head, my_getopt_t* getopt_ptr);
+void    print_llist_n_n1(node_t* n_head, bool state);
+char*   print_block(node_t *head, char* str);
 node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head);
 node_t* sync_nodes(node_t* head);
 
 
-void* my_realloc(void* buff, size_t size);
+void*   my_realloc(void* buff, size_t size);
 // gandalf - unit test - log
-int diff_block_02(node_t* head);
+int     diff_block_02(node_t* head);
 
 //error management 
-int error_handler(my_getopt_t* getopt_ptr, node_t* head);
-int error_add_block(node_t* head, my_getopt_t* getopt_ptr);
-int error_add_node(node_t* head, my_getopt_t* getopt_ptr);
-int error_rm_block(node_t* head, my_getopt_t* getopt_ptr);
-int error_rm_node(node_t** head, my_getopt_t* getopt_ptr);
+int     error_handler(my_getopt_t* getopt_ptr, node_t* head);
+int     error_add_block(node_t* head, my_getopt_t* getopt_ptr);
+int     error_add_node(node_t* head, my_getopt_t* getopt_ptr);
+int     error_rm_block(node_t* head, my_getopt_t* getopt_ptr);
+int     error_rm_node(node_t** head, my_getopt_t* getopt_ptr);
 
 //backup
-void serialize(node_t* head);
+void    serialize(node_t* head);
 node_t* deserialize(node_t* head);
 #endif

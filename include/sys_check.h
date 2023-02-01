@@ -3,7 +3,7 @@
 
 #define BUFSIZE 1024
 
-void operating_sys();
-int linux_perf_analysis();
+void    operating_sys();
+int     linux_perf_analysis();
 
 #endif
