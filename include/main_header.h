@@ -1,6 +1,27 @@
 #ifndef __HEADERFILE_A_
 #define __HEADERFILE_A_
 
+
+#define SIZE_BID 32
+#define SIZE_NID 12
+
+#ifndef STRUCT_NODE
+#define STRUCT_NODE
+struct node
+{
+    struct node* head;
+    struct node* next;
+    int index;
+    char bid[SIZE_BID];
+    char prev_bid[SIZE_BID];
+    int nid;
+};
+typedef struct node node_t;
+#endif
+
+
+
+
 #include <unistd.h>
 #include <stdlib.h>
 #include<fcntl.h>
@@ -14,6 +35,8 @@
 #include <my_readline.h>
 #include <my_blockchain.h>
 #include <sys_check.h>
+
+
 
 // #ifndef TRANSACTION_STRUCT
 // #define TRANSACTION_STRUCT
@@ -33,37 +56,35 @@
 // #endif
 
 
-#define BADCHAR (int)'?'
-#define BADARG (int)':'
-#define VALID_ARG "-l"
-#define BLOCK_ADD   2060171284
-#define BLOCK_RM    1112149039
-#define NODE_ADD    233620095
-#define NODE_RM     381772396
-#define SYNC        1491471
-#define LS          146
-#define QUIT        2044899
-#define TOKEN_MAX   7
-#define SIZE_BID 32
-#define SIZE_NID 12
-#define INVITE_OBRACKET '['
-#define INVITE_DIFF '-'
-#define INVITE_SYNC 's'
-#define INVITE_CLOSE "]>"
+#define BADCHAR                 (int)'?'
+#define BADARG                  (int)':'
+#define VALID_ARG               "-l"
+#define BLOCK_ADD               2060171284
+#define BLOCK_RM                1112149039
+#define NODE_ADD                233620095
+#define NODE_RM                 381772396
+#define SYNC                    1491471
+#define LS                      146
+#define QUIT                    2044899
+#define TOKEN_MAX               7
+#define INVITE_OBRACKET         '['
+#define INVITE_DIFF             '-'
+#define INVITE_SYNC             's'
+#define INVITE_CLOSE            "]>"
 
 
-#define RESS_ERROR "NOK\n1: no more resources available on computer\n"
+#define RESS_ERROR              "NOK\n1: no more resources available on computer\n"
 #define RESS_ERROR_LEN 
-#define NODE_EXIST_ERROR "NOK\n2: this node already exists\n"
-#define NODE_EXIST_ERROR_LEN 32
-#define BLOCK_EXIST_ERROR "NOK\n3: this block already exists\n"
+#define NODE_EXIST_ERROR        "NOK\n2: this node already exists\n"
+#define NODE_EXIST_ERROR_LEN    32
+#define BLOCK_EXIST_ERROR       "NOK\n3: this block already exists\n"
 #define BLOCK_EXIST_ERROR_LEN 
-#define NODE_DNT_EXIST "NOK\n4: node doesn't exists\n"
-#define NODE_DNT_EXIST_LEN 27
-#define BLOCK_DNT_EXIST "NOK\n5: block doesn't exists\n"
-#define BLOCK_DNT_EXIST_LEN 28
-#define CMD_ERROR "NOK\n6: command not found\n"
-#define OK "OK\n"
+#define NODE_DNT_EXIST          "NOK\n4: node doesn't exists\n"
+#define NODE_DNT_EXIST_LEN      27
+#define BLOCK_DNT_EXIST         "NOK\n5: block doesn't exists\n"
+#define BLOCK_DNT_EXIST_LEN     28
+#define CMD_ERROR               "NOK\n6: command not found\n"
+#define OK                      "OK\n"
 
 //my_split.h
 

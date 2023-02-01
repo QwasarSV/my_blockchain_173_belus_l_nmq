@@ -8,7 +8,6 @@ void delete_node_on_nid(node_t **head, int nid)
     {
         *head = tmp->next;
         free_node(tmp->head);
-        free(tmp->prev_bid);
         free(tmp);
         return;
     }
@@ -23,6 +22,5 @@ void delete_node_on_nid(node_t **head, int nid)
     }
     prev->next = tmp->next;
     free_node(tmp->head);
-    free(tmp->prev_bid);
     free(tmp);
 }

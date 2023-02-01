@@ -28,6 +28,7 @@ void serialize(node_t* head)
         }
     }
     write(fd, str, my_strlen(str));
+    free(str);
     close(fd);
 }
 
@@ -69,7 +70,8 @@ node_t* deserialize(node_t* head)
     {
    	    tokens = dirty_split(str, 1, ':');
 	    nid = my_ctoi(tokens[1], my_strlen(tokens[1]));
-	    tmp = create_new_node(nid, head);
+	    // tmp = create_new_node(nid, head);
+	    tmp = create_new_node(nid);
         head = insert_after_node(head, tmp);	
 	    head = deserialize_block(head, &tokens[2][1], nid);
 	    free(tokens);

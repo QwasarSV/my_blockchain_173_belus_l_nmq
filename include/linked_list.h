@@ -4,26 +4,6 @@
 #include <main_header.h>
 
 
-#ifndef STRUCT_NODE
-#define STRUCT_NODE
-struct node
-{
-    //hierarchy: n+1
-    int index;
-    struct node* head;
-    // bool gates[TOKEN_MAX];
-    char* bid;
-    char* prev_bid;
-    int nid;
-    //hierarchy: n
-    //int timestamp;
-    //transac_t transaction;
-    //char* proof[32];
-    struct node* next;
-};
-typedef struct node node_t;
-#endif
-
 
 
 //node/block

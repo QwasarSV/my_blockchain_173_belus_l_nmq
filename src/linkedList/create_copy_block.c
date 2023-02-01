@@ -3,10 +3,8 @@
 node_t* create_cpy_block(node_t* block)
 {
     node_t* result = malloc(sizeof(node_t));
-    result->prev_bid = malloc(sizeof(char) * SIZE_BID);
-    result->bid = malloc(sizeof(char) * SIZE_BID);
-    my_bzero(result->prev_bid, SIZE_BID);
-    my_bzero(result->bid, SIZE_BID);
+    // my_bzero(result->prev_bid, SIZE_BID);
+    // my_bzero(result->bid, SIZE_BID);
     my_strcpy(result->prev_bid, block->prev_bid);
     my_strcpy(result->bid, block->bid);
     result->index = block->index;

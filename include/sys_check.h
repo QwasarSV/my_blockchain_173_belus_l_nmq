@@ -1,5 +1,5 @@
-#ifndef __HEADERFILE_J_
-#define __HEADERFILE_J_
+#ifndef __HEADERFILE_G_
+#define __HEADERFILE_G_
 
 #define BUFSIZE 1024
 

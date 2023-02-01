@@ -3,11 +3,13 @@
 
 #include <main_header.h>
 
+
 //node/block
 
 node_t* create_block(node_t* head, int nid, char* bid);
 node_t* create_new_block(char* bid, char* prev_bid);
-node_t* create_new_node(int nid, node_t *head);
+// node_t* create_new_node(int nid, node_t *head);
+node_t* create_new_node(int nid);
 
 node_t* insert_at_head(node_t** head, node_t* node_to_insert);
 node_t* insert_after_node(node_t* node_to_insert, node_t* new_node);
