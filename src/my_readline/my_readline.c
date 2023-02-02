@@ -1,6 +1,6 @@
 #include <main_header.h>
 
-int READLINE_READ_SIZE = 25;
+int READLINE_READ_SIZE = 255;
 char* rl_buff;
 
 
@@ -126,4 +126,9 @@ char* my_readline(int fd)
         }
     }
     return new;
+}
+
+void tmp_buff_reset()
+{
+    my_bzero(rl_buff, READLINE_READ_SIZE);
 }

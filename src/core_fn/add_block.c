@@ -2,6 +2,10 @@
 
 int error_add_block(node_t* head, my_getopt_t* getopt_ptr)
 {
+    if (getopt_ptr->path_arr[3][0] == '*')
+    {
+        return EXIT_SUCCESS;
+    }
     int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
     if (is_node_on_network(head, nid) == false)
     {
@@ -13,8 +17,19 @@ int error_add_block(node_t* head, my_getopt_t* getopt_ptr)
 
 node_t* add_block(node_t* head, my_getopt_t* getopt_ptr)
 {
-    int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
+    node_t* tmp = head; 
+    if (getopt_ptr->path_arr[3][0] == '*')
     {
+        while (tmp != NULL)
+        {
+            head = create_block(head, tmp->nid, getopt_ptr->path_arr[2]);
+            set_last_bid(head, getopt_ptr->path_arr[2]);
+            tmp = tmp->next;
+        }
+    }
+    else
+    {
+        int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
         write(STDOUT_FILENO, OK, my_strlen(OK));
         head = create_block(head, nid, getopt_ptr->path_arr[2]);
         set_last_bid(head, getopt_ptr->path_arr[2]);

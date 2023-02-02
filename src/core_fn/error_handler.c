@@ -2,6 +2,12 @@
 
 int error_handler(my_getopt_t* getopt_ptr, node_t* head)
 {
+    if(operating_sys())
+    {
+        write(STDERR_FILENO, RESS_ERROR, RESS_ERROR_LEN);
+        return EXIT_FAILURE;
+    }
+
     switch (getopt_ptr->hash)
     {
     case BLOCK_ADD:

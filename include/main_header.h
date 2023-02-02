@@ -32,7 +32,6 @@ typedef struct node node_t;
 #include <sys_check.h>
 
 
-
 // #ifndef TRANSACTION_STRUCT
 // #define TRANSACTION_STRUCT
 // struct transac_s
@@ -69,7 +68,7 @@ typedef struct node node_t;
 
 
 #define RESS_ERROR              "NOK\n1: no more resources available on computer\n"
-#define RESS_ERROR_LEN 
+#define RESS_ERROR_LEN          47
 #define NODE_EXIST_ERROR        "NOK\n2: this node already exists\n"
 #define NODE_EXIST_ERROR_LEN    32
 #define BLOCK_EXIST_ERROR       "NOK\n3: this block already exists\n"
@@ -101,11 +100,12 @@ void    print_llist_n_n1(node_t* n_head, bool state);
 char*   print_block(node_t *head, char* str);
 node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head);
 node_t* sync_nodes(node_t* head);
-
-
-void*   my_realloc(void* buff, size_t size);
-// gandalf - unit test - log
 int     diff_block_02(node_t* head);
+void    invite_prmt(int val, int type);
+void    new_cmd(node_t* head);
+void*   my_realloc(void* buff, size_t size);
+
+
 
 //error management 
 int     error_handler(my_getopt_t* getopt_ptr, node_t* head);
@@ -117,4 +117,5 @@ int     error_rm_node(node_t** head, my_getopt_t* getopt_ptr);
 //backup
 void    serialize(node_t* head);
 node_t* deserialize(node_t* head);
+node_t* deserialize_block(node_t* head, char* str, int nid);
 #endif

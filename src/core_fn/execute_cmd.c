@@ -16,7 +16,15 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
             rm_block(head, getopt_ptr);
             break;
         case NODE_RM:
-            rm_node(&head, getopt_ptr);
+            if (getopt_ptr->path_arr[2][0] == '*')
+            {
+                print_and_free_llist(head);
+                head = NULL;
+            }
+            else
+            {
+                rm_node(&head, getopt_ptr);
+            }
             break;
         case LS:
             print_llist_n_n1(head, getopt_ptr->bool_arr[0]);
