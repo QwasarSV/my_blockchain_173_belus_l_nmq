@@ -14,10 +14,7 @@ int flag_parser(int argc, char** argv, char* valid_args, my_getopt_t* getopt_ptr
     }
     while (getopt_ptr->index < argc)
     {
-        if ((opt = my_getopt(argv, valid_args, getopt_ptr)) == -1)
-        {
-        }
-        else
+        if ((opt = my_getopt(argv, valid_args, getopt_ptr)) != - 1)
         {
             n_state(opt, getopt_ptr, argv);
         }

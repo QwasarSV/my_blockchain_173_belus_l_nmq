@@ -6,7 +6,7 @@ int count_cmd(char* str)
     int counter = 0;
     while (str[index] != '\0')
     {
-        if (str[index] == ' ')
+        if (str[index] == __SPACE_CHAR__)
         {
             counter += 1;
         }

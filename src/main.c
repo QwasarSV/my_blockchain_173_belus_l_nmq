@@ -2,7 +2,6 @@
 
 int main(void) 
 {
-    
     int             cmd_count = 0;
     int             fd = STDIN_FILENO;
     char*           str = NULL;
@@ -17,7 +16,7 @@ int main(void)
         getopt_ptr = malloc(sizeof(my_getopt_t));
         init_getopt(getopt_ptr, VALID_ARG);
         cmd_count = count_cmd(str) + 2;
-        tokens = dirty_split(str , 1, ' '); //draw me like one of your argv!
+        tokens = dirty_split(str , 1, __SPACE_CHAR__); //draw me like one of your argv! offset value to reproduce argv/argc behavior in order to be parsed inside getopt
         flag_parser(cmd_count, tokens, VALID_ARG, getopt_ptr);
         node = execute_cmd(getopt_ptr, node);
         if (getopt_ptr->exit_status == true)

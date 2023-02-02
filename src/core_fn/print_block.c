@@ -13,7 +13,7 @@ char* print_block(node_t *head, char* str)
         if (tmp->next != NULL)
         {
             size = my_strlen(str);
-            str[size] = ' ';
+            str[size] = __SPACE_CHAR__;
             my_strcat(str, tmp->bid);
             size = my_strlen(str);
             str[size] = ',';
@@ -21,7 +21,7 @@ char* print_block(node_t *head, char* str)
         else
         {
             size = my_strlen(str);
-            str[size] = ' ';
+            str[size] = __SPACE_CHAR__;
             my_strcat(str, tmp->bid);
         }
         tmp = tmp->next;

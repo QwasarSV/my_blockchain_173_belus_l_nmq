@@ -1,6 +1,6 @@
 #include <main_header.h>
 
-int error_handler(my_getopt_t* getopt_ptr, node_t* head)
+int error_handler(node_t* head, my_getopt_t* getopt_ptr)
 {
     if(operating_sys())
     {

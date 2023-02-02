@@ -2,7 +2,7 @@
 
 node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
 {
-    if (!error_handler(getopt_ptr, head) || getopt_ptr->hash == QUIT)
+    if (!error_handler(head, getopt_ptr) || getopt_ptr->hash == QUIT)
     {
         switch (getopt_ptr->hash)
         {
@@ -16,7 +16,7 @@ node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
             rm_block(head, getopt_ptr);
             break;
         case NODE_RM:
-            if (getopt_ptr->path_arr[2][0] == '*')
+            if (getopt_ptr->path_arr[2][0] == __STAR_CHAR__)
             {
                 print_and_free_llist(head);
                 head = NULL;

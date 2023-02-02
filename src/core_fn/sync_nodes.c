@@ -6,7 +6,7 @@ node_t* sync_nodes(node_t* head)
     node_t* tmp_n_b = head;
     node_t* tmp_b = NULL;
     node_t* tmp_cpy = NULL;
-    write(STDOUT_FILENO, OK, my_strlen(OK));
+    write(STDOUT_FILENO, OK, OK_SIZE);
     while (tmp_n_a != NULL)
     {
         tmp_n_b = head;

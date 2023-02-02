@@ -14,7 +14,7 @@ int linux_cpu_perf()
     char* str = my_readline(fd);
     close(fd);
     tmp_buff_reset();
-    char** tokens = dirty_split(str, 0, ' ');
+    char** tokens = dirty_split(str, 0, __SPACE_CHAR__);
 
     while (index < CPU_SIZE_ARR)
     {
@@ -31,9 +31,9 @@ int linux_cpu_perf()
 
     free(str);
     free(tokens);
-     printf("CPU usage: %.2f%%\n", cpu_usage);
     return cpu_usage; 
 }
+    // printf("CPU usage: %.2f%%\n", cpu_usage);
     // printf("the total is : %lli\n", total);
     // printf("idle value is : %lli\n", idle);
 
@@ -50,7 +50,7 @@ int linux_mem_perf()
     while ((str = my_readline(fd)))
     {
         count = count_cmd(str) - 1;
-        tokens = dirty_split(str, 0, ' ');
+        tokens = dirty_split(str, 0, __SPACE_CHAR__);
         len = my_strlen(tokens[count]);
         arr[index] = my_ctoi(tokens[count], len);
         index += 1;
@@ -64,9 +64,9 @@ int linux_mem_perf()
     }
     mem_usage = (double)(arr[0] - arr[2]) / arr[0] * 100.0;
     close(fd);
-    printf("mem usage is: %.2f%%\n",mem_usage);
     return mem_usage;
 }
+    // printf("mem usage is: %.2f%%\n",mem_usage);
 
 int operating_sys()
 {
@@ -77,7 +77,6 @@ int operating_sys()
     write(STDERR_FILENO,ERR_MESSAGE_WIN, ERR_MESSAGE_WIN_SIZE)
     return EXIT_SUCCESS
 #elif __linux__
-    // printf("Running on Linux\n");
     if (linux_cpu_perf() > PERF_LIMIT || linux_mem_perf() > PERF_LIMIT)
     {
         return EXIT_FAILURE;

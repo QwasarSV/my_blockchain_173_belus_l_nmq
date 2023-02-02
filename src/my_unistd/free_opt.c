@@ -7,7 +7,6 @@ void free_opt(int argc, char** argv, my_getopt_t* getopt_ptr)
     {
         free(getopt_ptr->path_arr);
     }
-    free(getopt_ptr->bool_arr);
-//    free(getopt_ptr->file_size);
+    free(getopt_ptr->bool_arr);;
     free(getopt_ptr);
 }

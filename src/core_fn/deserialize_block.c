@@ -8,7 +8,7 @@ node_t* deserialize_block(node_t* head, char* str, int nid)
 	int bid = 0;
 	while (count >= 0)
 	{
-        if (tokens[count][0] == ' ')
+        if (tokens[count][0] == __SPACE_CHAR__)
         {
             head = create_block(head, nid, &tokens[count][1]);
         }
