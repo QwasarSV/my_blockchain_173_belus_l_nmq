@@ -15,6 +15,25 @@ bool is_block_on_chain(node_t* block_head, node_t* block)
     return false;
 }
 
+bool is_block_on_chain_02(node_t* head, int nid, char* bid)
+{
+    node_t* tmp_node = head;
+    while (tmp_node->nid != nid && tmp_node != NULL)
+    {
+        tmp_node = tmp_node->next;
+    }
+    node_t* tmp = tmp_node->head;
+    while (tmp != NULL)
+    {
+        if (my_strcmp(bid, tmp->bid) == 0)
+        {
+            return true;
+        }
+        tmp = tmp->next;
+    }
+    return false;
+}
+
 bool check_bid(node_t* block_head, char* bid)
 {
     node_t* tmp = block_head;

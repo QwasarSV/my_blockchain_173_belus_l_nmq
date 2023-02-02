@@ -36,7 +36,6 @@ int linux_cpu_perf()
 }
     // printf("the total is : %lli\n", total);
     // printf("idle value is : %lli\n", idle);
-   
 
 int linux_mem_perf()
 {
@@ -71,22 +70,21 @@ int linux_mem_perf()
 
 int operating_sys()
 {
-#ifdef _WIN32   
+#ifdef _WIN32
     write(STDERR_FILENO,ERR_MESSAGE_WIN, ERR_MESSAGE_WIN_SIZE)
     return EXIT_SUCCESS
 #elif _WIN64
-    printf("1: Ressource analysis unavailable on windows\n");
+    write(STDERR_FILENO,ERR_MESSAGE_WIN, ERR_MESSAGE_WIN_SIZE)
     return EXIT_SUCCESS
-#elif __linux__ 
-    printf("Running on Linux\n");
-    if (linux_cpu_perf() > 70 || linux_mem_perf() > 80 )
+#elif __linux__
+    // printf("Running on Linux\n");
+    if (linux_cpu_perf() > PERF_LIMIT || linux_mem_perf() > PERF_LIMIT)
     {
         return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
-
 #elif __APPLE__
     write(STDERR_FILENO, ERR_MESSAGE_MACOS, ERR_MESSAGE_MACOS_SIZE)
     return EXIT_SUCCESS
-#endif 
+#endif
 }

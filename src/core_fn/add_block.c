@@ -12,6 +12,11 @@ int error_add_block(node_t* head, my_getopt_t* getopt_ptr)
         write(STDERR_FILENO, NODE_DNT_EXIST, NODE_DNT_EXIST_LEN);
         return EXIT_FAILURE;
     }
+    if (is_block_on_chain_02(head, nid, getopt_ptr->path_arr[2]))
+    {
+        write(STDERR_FILENO,BLOCK_EXIST_ERROR, BLOCK_EXIST_ERROR_LEN);
+        return EXIT_FAILURE;
+    }
     return EXIT_SUCCESS;
 }
 
@@ -30,7 +35,7 @@ node_t* add_block(node_t* head, my_getopt_t* getopt_ptr)
     else
     {
         int nid = my_ctoi(getopt_ptr->path_arr[3], my_strlen(getopt_ptr->path_arr[3]));
-        write(STDOUT_FILENO, OK, my_strlen(OK));
+        write(STDOUT_FILENO, OK, OK_SIZE);
         head = create_block(head, nid, getopt_ptr->path_arr[2]);
         set_last_bid(head, getopt_ptr->path_arr[2]);
     }

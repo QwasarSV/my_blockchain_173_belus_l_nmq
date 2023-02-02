@@ -15,7 +15,6 @@ void print_llist_n_n1(node_t* n_head, bool state)
         if (state == true)
         {
             pos = my_strlen(str);
-            // str[size] = ':';
             my_strcat(str, ":");
         }
         if (tmp->head != NULL && state == true)

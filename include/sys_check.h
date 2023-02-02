@@ -1,6 +1,7 @@
 #ifndef __HEADERFILE_G_
 #define __HEADERFILE_G_
 
+#define PERF_LIMIT 70
 #define ERR_MESSAGE_WIN "1: Ressource analysis unavailable on windows\n"
 #define ERR_MESSAGE_WIN_SIZE 45
 #define ERR_MESSAGE_MACOS "1: Ressource analysis unavailable on mac os\n"

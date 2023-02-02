@@ -18,6 +18,6 @@ void rm_block(node_t* head, my_getopt_t* getopt_ptr)
     {
         tmp = tmp->next;
     }
-    write(STDOUT_FILENO, OK, my_strlen(OK));
+    write(STDOUT_FILENO, OK, OK_SIZE);
     delete_block_on_bid(&tmp->head, getopt_ptr->path_arr[2]);
 }

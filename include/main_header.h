@@ -72,14 +72,14 @@ typedef struct node node_t;
 #define NODE_EXIST_ERROR        "NOK\n2: this node already exists\n"
 #define NODE_EXIST_ERROR_LEN    32
 #define BLOCK_EXIST_ERROR       "NOK\n3: this block already exists\n"
-#define BLOCK_EXIST_ERROR_LEN 
+#define BLOCK_EXIST_ERROR_LEN   33
 #define NODE_DNT_EXIST          "NOK\n4: node doesn't exists\n"
 #define NODE_DNT_EXIST_LEN      27
 #define BLOCK_DNT_EXIST         "NOK\n5: block doesn't exists\n"
 #define BLOCK_DNT_EXIST_LEN     28
 #define CMD_ERROR               "NOK\n6: command not found\n"
 #define OK                      "OK\n"
-
+#define OK_SIZE                 3
 //my_split.h
 
 char**  dirty_split(char* str, int start_pos, char ch);

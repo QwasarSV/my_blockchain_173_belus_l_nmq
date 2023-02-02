@@ -1,6 +1,7 @@
 #include <main_header.h>
 
-char* consensus_check(node_t* head, char* buff)
+// placeholder consensus
+char* consensus_check(node_t* head, char* buff) 
 {
     int max_count = 0;
     // char max_element[SIZE_BID] = {'\0'};
