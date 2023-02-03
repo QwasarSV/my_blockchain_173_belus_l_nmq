@@ -2,11 +2,11 @@
 
 int error_handler(node_t* head, my_getopt_t* getopt_ptr)
 {
-    if (operating_sys())
-    {
-        write(STDERR_FILENO, RESS_ERROR, RESS_ERROR_LEN);
-        return EXIT_FAILURE;
-    }
+    // if (operating_sys())
+    // {
+    //     write(STDERR_FILENO, RESS_ERROR, RESS_ERROR_LEN);
+    //     return EXIT_FAILURE;
+    // }
 
     switch (getopt_ptr->hash)
     {
@@ -23,8 +23,6 @@ int error_handler(node_t* head, my_getopt_t* getopt_ptr)
     case SYNC:
         return EXIT_SUCCESS;
     case QUIT:
-        return EXIT_SUCCESS;
-    case PING:
         return EXIT_SUCCESS;
     default:
         write(STDERR_FILENO, CMD_ERROR, CMD_ERROR_SIZE);

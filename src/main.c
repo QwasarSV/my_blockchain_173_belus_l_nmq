@@ -8,8 +8,10 @@ int main(void)
     char**          tokens = NULL;
     node_t*         node = NULL;
     my_getopt_t*    getopt_ptr = NULL;
+
     node = deserialize(node);
     init_my_readline();
+    
     while ((str = my_readline(fd)) != NULL)
     {
         
