@@ -91,7 +91,7 @@ Implement consensus algorithm by setting rules.
   │           │                     │                         │                 │
   │           ▼                     ▼                         ▼                 ▼
   │ ┌────────────────┐    ┌───────────────────┐    ┌───────────────────┐    ┌──────┐
-  │ │ Add Block/Node │◄───│ Remove Block/Node │◄───│ Synchronize Chain │    │ Quit │
+  │ │ Add Block/Node │    │ Remove Block/Node │    │ Synchronize Chain │    │ Quit │
   │ └────────┬───────┘    └─────────┬─────────┘    └──────────┬────────┘    └──┬───┘
   │          ▼                      ▼                         ▼                │
   └────────────────────────────────────────────────────────────                ▼
