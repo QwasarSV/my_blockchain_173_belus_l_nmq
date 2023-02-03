@@ -11,6 +11,7 @@
 #define CPU_SIZE_ARR            11
 #define CPU_LEN_STR             12
 
+
 int operating_sys();
 int linux_cpu_perf();
 int linux_mem_perf();
