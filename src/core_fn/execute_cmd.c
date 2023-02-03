@@ -2,8 +2,10 @@
 
 node_t* execute_cmd(my_getopt_t* getopt_ptr, node_t* head)
 {
+
     if (!error_handler(head, getopt_ptr) || getopt_ptr->hash == QUIT)
     {
+
         switch (getopt_ptr->hash)
         {
         case BLOCK_ADD:

@@ -2,7 +2,7 @@ TARGET_EXEC := my_blockchain
 cc := GCC
 BUILD_DIR := ./build
 SRC_DIRS := ./src
-CFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
+CFLAGS = #-g3 -fsanitize=address #-Wall -Wextra -Werror
 LDFLAGS = $(CFLAGS)
 
 export C_INCLUDE_PATH=include/

@@ -1,5 +1,5 @@
-#ifndef __HEADERFILE_H_
-#define __HEADERFILE_H_
+#ifndef __HEADERFILE_B_
+#define __HEADERFILE_B_
 
 #include <main_header.h>
 //backup

@@ -1,8 +1,7 @@
-#ifndef __HEADERFILE_I_
-#define __HEADERFILE_I_
+#ifndef __HEADERFILE_C_
+#define __HEADERFILE_C_
 
 #include <main_header.h>
-
 
 char*   consensus_check(node_t* head, char* buff);
 void    set_last_bid(node_t* head, char* bid);

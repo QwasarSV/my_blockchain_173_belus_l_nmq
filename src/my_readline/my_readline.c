@@ -1,8 +1,7 @@
 #include <main_header.h>
 
-int READLINE_READ_SIZE = 255;
+int READLINE_READ_SIZE = 25;
 char* rl_buff;
-
 
 char* init_my_readline()
 {

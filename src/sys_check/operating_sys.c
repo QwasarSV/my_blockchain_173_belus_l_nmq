@@ -1,9 +1,13 @@
 #include <main_header.h>
 
 // cpu info goes in that order user, nice, system, idle, iowait, irq, softirq, steal;
-
-int linux_cpu_perf() 
+int linux_cpu_perf()
 {
+    int size = my_strlen(rl_buff);
+    char buff[size];
+    my_strcpy(buff, rl_buff);
+    my_readline(-1);
+    init_my_readline();
     int index = 1;
     long long total = 0;
     long long value = 0;
@@ -13,9 +17,7 @@ int linux_cpu_perf()
     int fd = open("/proc/stat", O_RDONLY);
     char* str = my_readline(fd);
     close(fd);
-    tmp_buff_reset();
     char** tokens = dirty_split(str, 0, __SPACE_CHAR__);
-
     while (index < CPU_SIZE_ARR)
     {
         len = my_strlen(tokens[index]);
@@ -28,17 +30,19 @@ int linux_cpu_perf()
         index += 1;
     }
     cpu_usage = (double)(total - idle) / total * 100.0;
-
-    free(str);
-    free(tokens);
+    my_readline(-1);
+    init_my_readline();
+    my_strcpy(rl_buff, buff);
     return cpu_usage; 
 }
-    // printf("CPU usage: %.2f%%\n", cpu_usage);
-    // printf("the total is : %lli\n", total);
-    // printf("idle value is : %lli\n", idle);
 
 int linux_mem_perf()
 {
+    int size = my_strlen(rl_buff);
+    char buff[size];
+    my_strcpy(buff, rl_buff);
+    my_readline(-1);
+    init_my_readline();
     int fd = open("/proc/meminfo", O_RDONLY);
     char* str = NULL ;
     int index = 0;
@@ -64,9 +68,11 @@ int linux_mem_perf()
     }
     mem_usage = (double)(arr[0] - arr[2]) / arr[0] * 100.0;
     close(fd);
+    my_readline(-1);
+    init_my_readline();
+    my_strcpy(rl_buff, buff);
     return mem_usage;
 }
-    // printf("mem usage is: %.2f%%\n",mem_usage);
 
 int operating_sys()
 {
@@ -77,7 +83,7 @@ int operating_sys()
     write(STDERR_FILENO,ERR_MESSAGE_WIN, ERR_MESSAGE_WIN_SIZE)
     return EXIT_SUCCESS
 #elif __linux__
-    if (linux_cpu_perf() > PERF_LIMIT || linux_mem_perf() > PERF_LIMIT)
+    if (linux_cpu_perf() > PERF_LIMIT || linux_mem_perf() > PERF_LIMIT )
     {
         return EXIT_FAILURE;
     }
@@ -87,3 +93,8 @@ int operating_sys()
     return EXIT_SUCCESS
 #endif
 }
+
+    // printf("CPU usage: %.2f%%\n", cpu_usage);
+    // printf("the total is : %lli\n", total);
+    // printf("idle value is : %lli\n", idle);
+    // printf("mem usage is: %.2f%%\n",mem_usage);

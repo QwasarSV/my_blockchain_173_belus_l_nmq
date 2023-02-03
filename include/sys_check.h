@@ -1,5 +1,5 @@
-#ifndef __HEADERFILE_G_
-#define __HEADERFILE_G_
+#ifndef __HEADERFILE_I_
+#define __HEADERFILE_I_
 
 #define PERF_LIMIT              70
 #define ERR_MESSAGE_WIN         "1: Ressource analysis unavailable on windows\n"
@@ -12,7 +12,7 @@
 #define CPU_LEN_STR             12
 
 int operating_sys();
-int linux_perf_analysis();
+int linux_cpu_perf();
 int linux_mem_perf();
 
 #endif

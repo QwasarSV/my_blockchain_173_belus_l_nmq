@@ -1,9 +1,6 @@
 #ifndef __HEADERFILE_A_
 #define __HEADERFILE_A_
 
-
-
-
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -16,7 +13,7 @@
 #include <my_error_management.h>
 #include <my_backup.h>
 #include <sys_check.h>
-#include <blockchain_check.h>
+#include <my_blockchain_check.h>
 
 // #ifndef TRANSACTION_STRUCT
 // #define TRANSACTION_STRUCT
@@ -46,6 +43,7 @@
 #define SYNC                    1491471
 #define LS                      146
 #define QUIT                    2044899
+#define PING                    1598523
 #define TOKEN_MAX               7
 #define MAX_INPUT_TOKENS        20
 #define INVITE_OBRACKET         '['

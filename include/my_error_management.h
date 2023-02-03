@@ -1,5 +1,5 @@
-#ifndef __HEADERFILE_B_
-#define __HEADERFILE_B_
+#ifndef __HEADERFILE_D_
+#define __HEADERFILE_D_
 
 #include <main_header.h>
 
@@ -12,6 +12,7 @@
 #define BLOCK_DNT_EXIST         "NOK\n5: block doesn't exists\n"
 #define BLOCK_DNT_EXIST_LEN     28
 #define CMD_ERROR               "NOK\n6: command not found\n"
+#define CMD_ERROR_SIZE          25
 #define OK                      "OK\n"
 #define OK_SIZE                 3
 
